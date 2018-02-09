@@ -15,7 +15,7 @@ Provoquer des mutations dans un organisme d’intérêt permet de localiser les 
 C'est une méthode utilisée dans les cas où on ne connaît pas ni la séquence, ni la fonction du gène mais dont la mutation est supposé être à l'origine d'un caractere phénotypique. Un croisement avec une lignée génétiquement différente qui n’a pas le phénotype mutant est réalisé. Suite au croisement il est necessaire de génotyper un grand nombre d'individu et cela est un facteur fastidieux et qui prend beaucoup de temps. La révolution dans les nouvelles technologies de séquençage et d'assemblage du génome a facilité la tâche. Aujourd'hui on peut sequencer plusieurs mutants en même temps et analyser les variations génomique sur tout le génome en une seule fois.
 
 Toutefois c'est une analyse bioinformatique qui requiert de nombreuses étapes et l'utilisation de plusieurs programmes et logiciels distincts. La plupart des programmes utilisés sont adaptés à un organisme modèle ou à un « design » génétique et dépendent de
-serveurs distants. Afin de faciliter l'étape de cartographie et l'identification des mutations un pipeline appelé "_Andalusian_Mapping_" a été devloppé. Ce pipeline permet de travailler avec differentes espèces et souches de cartographie. 
+serveurs distants. Afin de faciliter l'étape de cartographie et l'identification des mutations un pipeline appelé "_Andalusian_Mapping_" a été devloppé. Ce pipeline permet de travailler avec differentes espèces et souches de cartographie.
 
 
 
