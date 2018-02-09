@@ -105,5 +105,4 @@ Présentation de Fabrice Besnard
 
 ### Maitre d'oeuvre
 
-présentation de l'équipe d'étudiant
->>>>>>> a9722af3ec6722ffedbace883f8bc7ab116167ce
+Pour réaliser ce projet nous serons trois étudiants en Master 1 de Bio-informatique a Lyon 1 : Juliette Geoffray, Hermes Paraqindes et Eric Cumunnel. 
