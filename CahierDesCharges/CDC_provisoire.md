@@ -46,7 +46,24 @@ Il sera aussi appréciable, mais optionnel, d’apporter des conseils sur l’am
 
 ### Description de l'existant
 
-description du pipeline du guars.
+Récemment, Cloudmap, un pipeline automatique de mapping-by-sequencing et d'identification de mutants a été développé et intégré à Galaxy, qui est une interface utilisateur simple et intuitive.
+Cependant, ce pipeline ne permet pas à ce jour de travailler avec des génomes de référence "exotiques", étant donné que seuls les gènomes modèles comme *Caenorhabditis elegans* ou *Arabidopsis thaliana* sont disponibles sur Galaxy.
+*Andalusian Mapping* a donc été développé dans le but de fournir un outil similaire afin de travailler avec des organismes non-modèles.
+
+*Andalusian Mapping* est un pipeline permettant d'effectuer une cartographie par séquençage afin d'identifier les régions les plus susceptibles d'être responsables d'une mutation.
+Ce pipeline est un script bash permettant l'utilisation en une seule étape de plusieurs outils bioinformatiques.
+
+SCHEMA DU PIPELINE
+
+L'objectif de ce pipeline est de rendre suffisament simple l'utilisation de ces outils afin d'être accessible à la communauté scientifique sans nécessité d'un background informatique. Il tourne sous environnement Linux et Mac.
+Une mise en place de ces logiciels est cependant nécessaire :
+
+* bwa version 0.7.5a-r405 ou supérieur
+* samtools version 0.1.18 ou supérieur
+* Picard Version 1.110 ou supérieur
+* GATK Version 3.7 ou supérieur
+* R Version 3.3 ou supérieur, avec le package ggplot2.
+* snpEff Version 4.1g ou supérieur
 
 ### Critère d'acceptabilité du produit
 
@@ -99,8 +116,4 @@ Ce projet nous a été proposé par Fabrice Besnard, biologiste rattaché a l’
 
 ### Maître d’œuvre
 
-<<<<<<< HEAD
-présentation de l'équipe d'étudiant
-=======
 Pour réaliser ce projet nous serons trois étudiants en Master 1 de Bio-informatique a Lyon 1 : Juliette Geoffray, Hermes Paraqindes et Eric Cumunnel.
->>>>>>> 698b990b24946d5277083fc4030c11ce98d95c71
