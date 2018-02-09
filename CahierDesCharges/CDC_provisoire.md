@@ -98,8 +98,6 @@ Les fonctionnalité que doit remplir le code permettant la sortie des résultats
 
 L'interface développer est réaliser sous le système d'exploitation Linux, il comprendra des parties en Shell, python et on utilisera une librairie graphique python.
 
-Le
-
 ## Contraintes
 
 ### Délais
