@@ -52,6 +52,8 @@ description du pipeline du guars.
 
 Afin de répondre a la problématique une interface graphique sera développer. Elle devra permettre la rédaction du formulaire en entrée de pipeline, l’exécution du pipeline et enfin la visualisation des résultats de sorties.
 
+Le logiciel doit être facile d'utilisation et informatif.
+
 ## Expression des besoins
 
 ### Besoins fonctionnels
@@ -71,6 +73,8 @@ Les fonctionnalité que doit remplir le code permettant la sortie des résultats
 
 L'interface développer est réaliser sous le système d'exploitation Linux, il comprendra des parties en Shell, python et on utilisera une librairie graphique python.
 
+Le
+
 ## Contraintes
 
 ### Délais
@@ -78,6 +82,8 @@ L'interface développer est réaliser sous le système d'exploitation Linux, il 
 Le projet s'organise sur une période de 4 semaines. Il débutera le lundi 5 février et prendra fin le vendredi 2 mars. Le projet pourra être continué durant une période de cours allant du 5 au 29 mars.
 
 Un cahier des charges définitif devra être présenter le lundi 12 février.
+
+Le délivrable final devra être rendu le 29 mars 2018.
 
 ### Autres contraintes
 
@@ -89,7 +95,11 @@ Ajouter l'image du diagramme de Gantt.
 
 ### Plan d'assurance qualité
 
-Le contrôle qualité de l'interface développer sera sa bonne exécution, sans erreur et en étant le plus facile et agréable à utiliser.
+Le contrôle qualité de l'interface développée sera sa bonne exécution, sans erreur et en étant le plus facile et agréable à utiliser.
+
+* Le logiciel sera tester par des membres de differents équipes.
+* Validation par _Dr Besnard_
+* Utilisation du logiciel par des utilisateurs non initiés en informatique
 
 ## Responsabilités
 
@@ -99,8 +109,4 @@ Ce projet nous a été proposé par Fabrice Besnard, biologiste rattaché a l’
 
 ### Maître d’œuvre
 
-<<<<<<< HEAD
-présentation de l'équipe d'étudiant
-=======
 Pour réaliser ce projet nous serons trois étudiants en Master 1 de Bio-informatique a Lyon 1 : Juliette Geoffray, Hermes Paraqindes et Eric Cumunnel.
->>>>>>> 698b990b24946d5277083fc4030c11ce98d95c71
