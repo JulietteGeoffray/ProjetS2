@@ -28,15 +28,15 @@ Les croisements :
 + **F2** : On obtient cette génération par retro reproduction de la génération F1. A cette étape on calcul les proportion de mutant/sauvage que l'ont obtient. Si l'on est proche des proportion medelienne on sais que le ou les mutations qui génère notre phétotipe sont proche l'une de l'autre. On est dans le cadre d'une ségrégation 3-1.
 + **F3** :
 
-Le ségrégation c'est la séparation des phénotype grave a une descendance, on sépare les trait récessif des parents.
+Le ségrégation c'est la séparation des phénotype grâce a une descendance, on sépare les trait récessif des parents.
 
 ### Objectifs
 
-L’objectif principale de ce projets consiste a créer une interface pour le remplissage d'un formulaire nécessaire au lancement du pipeline développer et d'une interface permettant un affichage claire des résultats de sortie.
+L’objectif principale de ce projets consiste à créer une interface pour le remplissage d'un formulaire nécessaire au lancement du pipeline développer et d'une interface permettant un affichage claire des résultats de sortie.
 
-On cherchera dans un premier temps a fournir un formulaire simple ou l'on devrais renseigner tout les champs puis a implémenter dans la mesure du possible la remplissage automatique de certain champs si l'utilisateur le souhaite.
+On cherchera dans un premier temps a fournir un formulaire simple ou l'on devra renseigner tout les champs puis on vise l'implémentation, dans la mesure du possible, le remplissage automatique de certain champs si l'utilisateur le souhaite. Certain champs pourrons être remplis via des scripts développer par le maîtrise d’œuvre.
 
-Il sera aussi appréciable, mais optionnel, d’apporter des conseils sur l’amélioration du pipeline en lui même.
+Il sera aussi appréciable, mais optionnel, d’apporter des conseils sur l’amélioration du pipeline en lui même. Comme facilité l’installation et des dépendance lié au logiciels utilisé.
 
 ### Description de l'existant
 
@@ -59,7 +59,7 @@ Les fonctionnalité que doit remplir le code permettant la rédaction du fichier
 
 Les fonctionnalité que doit remplir le code permettant la sortie des résultats :
 
-+ Visualisation claire des graphique d’intérêts
++ Visualisation claire des graphique d’intérêts.
 
 ### besoins non fonctionnels
 
@@ -69,7 +69,9 @@ L'interface développer est réaliser sous le système d'exploitation Linux, il 
 
 ### Délais
 
-Le projet s'organise sur une période de 4 semaines. Il débutera le lundi 5 février et prendra fin le vendredi 2 mars. Un cahier des charges définitif devra être présenter le lundi 12 février.
+Le projet s'organise sur une période de 4 semaines. Il débutera le lundi 5 février et prendra fin le vendredi 2 mars. Le projet pourra être continué durant une période de cours allant du 5 au 29 mars.
+
+Un cahier des charges définitif devra être présenter le lundi 12 février.
 
 ### Autres contraintes
 
@@ -77,11 +79,11 @@ Le projet s'organise sur une période de 4 semaines. Il débutera le lundi 5 fé
 
 ### Planification
 
-Diagramme de gant et tableau de qui compte faire quoi
+Ajouter l'image du diagramme de Gantt.
 
 ### Plan d'assurance qualité
 
-Le contrôle qualité de l'interface développer sera sa bonne exécution, sans erreur et en étant le plus facile d'utilisation et agréable à utiliser.
+Le contrôle qualité de l'interface développer sera sa bonne exécution, sans erreur et en étant le plus facile et agréable à utiliser.
 
 ## Responsabilités
 
