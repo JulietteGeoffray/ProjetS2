@@ -65,6 +65,14 @@ Une mise en place de ces logiciels est cependant nécessaire :
 * R Version 3.3 ou supérieur, avec le package ggplot2.
 * snpEff Version 4.1g ou supérieur
 
+Description du pipeline dans son ensemble :
+
+<center>
+![SchemaPipeline](schemaPipeline.png)
+</center>
+
+_A compléter_
+
 ### Critère d'acceptabilité du produit
 
 Afin de répondre a la problématique une interface graphique sera développer. Elle devra permettre la rédaction du formulaire en entrée de pipeline, l’exécution du pipeline et enfin la visualisation des résultats de sorties.
