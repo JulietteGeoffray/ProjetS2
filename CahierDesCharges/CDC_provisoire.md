@@ -34,15 +34,15 @@ Les croisements :
 + **F2** : On obtient cette génération par retro reproduction de la génération F1. A cette étape on calcul les proportion de mutant/sauvage que l'ont obtient. Si l'on est proche des proportion medelienne on sais que le ou les mutations qui génère notre phétotipe sont proche l'une de l'autre. On est dans le cadre d'une ségrégation 3-1.
 + **F3** :
 
-Le ségrégation c'est la séparation des phénotype grave a une decendance, on sépart les trait recessif des parents. -->
-
+Le ségrégation c'est la séparation des phénotype grâce a une descendance, on sépare les trait récessif des parents.
+-->
 ### Objectifs
 
-L'objetif principale de ce projets conciste a créer une interface pour le remplissage d'un formulaire nécéssaire au lancement du pipeline développer et d'une interface permetant un affichge claire des résultats de sortie.
+L’objectif principale de ce projets consiste à créer une interface pour le remplissage d'un formulaire nécessaire au lancement du pipeline développer et d'une interface permettant un affichage claire des résultats de sortie.
 
-On cherchera dans un premier temps a fournir un formulaire simple ou l'on devrais renseigner tout les champs puis a implémenter dans la mesure du posible la remplissage automatique de certain champs si l'utilisateur le souhaite.
+On cherchera dans un premier temps a fournir un formulaire simple ou l'on devra renseigner tout les champs puis on vise l'implémentation, dans la mesure du possible, le remplissage automatique de certain champs si l'utilisateur le souhaite. Certain champs pourrons être remplis via des scripts développer par le maîtrise d’œuvre.
 
-Il sera aussi apréciable, mais optionnel, d'aporter des conseils sur l'améloration du pipeline en lui même.
+Il sera aussi appréciable, mais optionnel, d’apporter des conseils sur l’amélioration du pipeline en lui même. Comme facilité l’installation et des dépendance lié au logiciels utilisé.
 
 ### Description de l'existant
 
@@ -50,8 +50,7 @@ description du pipeline du guars.
 
 ### Critère d'acceptabilité du produit
 
-Afin de répondre a la problématique une interface graphique sera développer. Elle devra permettre la rédaction du formulaire en entrée de pipeline, l'éxécution du pipeline et enfin la visualisation des résultats de sorties.
-
+Afin de répondre a la problématique une interface graphique sera développer. Elle devra permettre la rédaction du formulaire en entrée de pipeline, l’exécution du pipeline et enfin la visualisation des résultats de sorties.
 
 ## Expression des besoins
 
@@ -66,24 +65,19 @@ Les fonctionnalité que doit remplir le code permettant la rédaction du fichier
 
 Les fonctionnalité que doit remplir le code permettant la sortie des résultats :
 
-+ Visualisation claire des graphique d’intérêts
++ Visualisation claire des graphique d’intérêts.
 
 ### besoins non fonctionnels
 
-
-L'interface développer est réaliser sous le système d'exploitation Linux, ils comprendrons des parties en Shell, python et "librairie graphique python".
-
-L'interface développer est réaliser sous le système d'exploitation lunux, ils comprendrons des parties en shell, python et "librairie graphique python".
-
+L'interface développer est réaliser sous le système d'exploitation Linux, il comprendra des parties en Shell, python et on utilisera une librairie graphique python.
 
 ## Contraintes
 
 ### Délais
 
-Le projet s'organise sur une période de 4 semaines. Il débutera le lundi 5 février et prendra fin le vendredi 2 mars. Un cahier des charges définitif devra être présenter le lundi 12 février.
+Le projet s'organise sur une période de 4 semaines. Il débutera le lundi 5 février et prendra fin le vendredi 2 mars. Le projet pourra être continué durant une période de cours allant du 5 au 29 mars.
 
-Le projet s'organise sur une période de 4 semaines. Il débutera le lundi 5 février et prendra fin le vendredi 2 mars. Un cachier des charges définitif devra être présenter le lundi 12 février.
-
+Un cahier des charges définitif devra être présenter le lundi 12 février.
 
 ### Autres contraintes
 
@@ -91,24 +85,22 @@ Le projet s'organise sur une période de 4 semaines. Il débutera le lundi 5 fé
 
 ### Planification
 
-Diagramme de gant et tableau de qui compte faire quoi
+Ajouter l'image du diagramme de Gantt.
 
 ### Plan d'assurance qualité
 
-Le contrôle qualité de l'interface développer sera sa bonne exécution, sans erreur et en étant le plus facile d'utilisation et agréable à utiliser.
+Le contrôle qualité de l'interface développer sera sa bonne exécution, sans erreur et en étant le plus facile et agréable à utiliser.
 
-## Responsailités
+## Responsabilités
 
-### Maitrise d'ouvrage
+### Maîtrise d'ouvrage
 
 Ce projet nous a été proposé par Fabrice Besnard, biologiste rattaché a l’École normale supérieur de Lyon (ENS), travaillant dans le Laboratoire Reproduction et Développement des Plantes (RDP).
 
-### Maitre d'oeuvre
+### Maître d’œuvre
 
-Pour réaliser ce projet nous serons trois étudiants en Master 1 de bio-informatique de l'Université Claude Bernard Lyon 1 : Juliette Geoffray, Eric Cumunnel et Hermes Paraqindes.
-
-Présentation de Fabrice Besnard
-
-### Maitre d'oeuvre
-
+<<<<<<< HEAD
 présentation de l'équipe d'étudiant
+=======
+Pour réaliser ce projet nous serons trois étudiants en Master 1 de Bio-informatique a Lyon 1 : Juliette Geoffray, Hermes Paraqindes et Eric Cumunnel.
+>>>>>>> 698b990b24946d5277083fc4030c11ce98d95c71
