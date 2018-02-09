@@ -8,13 +8,19 @@
 
 La mutagenèse est un processus par lequel l'information génétique d'un organisme donc de son ADN est modifiée, ce qui entraîne une mutation.
 
-L'apparition des mutants dans une population est un phénomene rare avec une très faible probabilité. Afin d'augmenter cette probabilité, les organismes peuvent être traiter par des agents mutagènes qui vont introduire des mutations (remplacement, modification ou endommagement) sur l'organisme de manière aléatoire.
+L'apparition des mutants dans une population est un phénomene rare avec une très faible probabilité. Afin d'augmenter cette probabilité, les organismes peuvent être traiter par des agents mutagènes qui vont introduire des mutations (remplacement, modification ou endommagement) sur l'organisme de manière aléatoire. Les agents mutagènes peuvent être de nature chimique comme EMS (_Méthanesulfonate d'éthyle_),de nature physique comme la lumière ultraviolette et les radiations ionisantes ou de nature bactérienne pathogenique qui contienne des plasmides (ex _T DNA_) capable de s'integrer au génome de l'hôte.
 
-Elle peut être provoqué a l'aide de mutagène tel que les EMS: agents chimique, ionisant : rayon UV, gama ou encore grâce a des bactérie qui viendrons insérer une séquence ADN dans le génome de notre organisme d'intérêt (TDNA).
+Provoquer des mutations dans un organisme d’intérêt permet de localiser les gènes d’intérêts, de les cartographier et d'en déduire des informations sur le rôle des gènes. Identification des mutations responsables du phénotype du mutant constitue le principe base de la "génétique classique". La méthode utilisée pour identifier la mutation recherchée est celle du clonage positionnel.
 
-Provoquer des mutations dans un organisme d’Intérêt permet entre autre de localisé les gènes d’intérêt et ainsi de la cartographier. On va comparer grâce a la génétique mendélienne des organisme dit sauvage et d'autre dit mutant. Les organisme sauvage sont des organisme présentant des phénotype et de génotype généraux, présent en grande quantité naturellement. Les phénotype et génotype mutant sont des organisme qui ne pourrais pas survivre dans leurs milieu naturel. Par exemple une plante mutante qui ne pourrais pas fabriquer de fleur mais seulement des feuilles.
+C'est une méthode utilisée dans les cas où on ne connaît pas ni la séquence, ni la fonction du gène mais dont la mutation est supposé être à l'origine d'un caractere phénotypique. Un croisement avec une lignée génétiquement différente qui n’a pas le phénotype mutant est réalisé. Suite au croisement il est necessaire de génotyper un grand nombre d'individu et cela est un facteur fastidieux et qui prend beaucoup de temps. La révolution dans les nouvelles technologies de séquençage et d'assemblage du génome a facilité la tâche. Aujourd'hui on peut sequencer plusieurs mutants en même temps et analyser les variations génomique sur tout le génome en une seule fois.
 
-Dans cette analyse nous utiliserons des plantes qui sont capable de se reproduire avec elle même (selfing ou self-fertilization). Ce qui va nous être très être très utiles.
+Toutefois c'est une analyse bioinformatique qui requiert de nombreuses étapes et l'utilisation de plusieurs programmes et logiciels distincts. La plupart des programmes utilisés sont adaptés à un organisme modèle ou à un « design » génétique et dépendent de
+serveurs distants. Afin de faciliter l'étape de cartographie et l'identification des mutations un pipeline appelé "_Andalusian_Mapping_" a été devloppé. Ce pipeline permet de travailler avec differentes espèces et souches de cartographie. 
+
+
+
+
+<!--Dans cette analyse nous utiliserons des plantes qui sont capable de se reproduire avec elle même (selfing ou self-fertilization). Ce qui va nous être très être très utiles.
 
 La question principale que l'on se pose est comme trouver la position de la mutation que l'on cherche? Par exemple on cherche le ou les gènes résponsable de la couleurs des feuilles. On va muter un grand nombre de plantes et si par chanche on se rend compte que l'un des pénotype a une couleur de feuille différente on a toucher ce ou ces gènes d'intéret. On va alors procéder par croissement pour esayer de retrouer le locus de notre mutation.
 
@@ -28,7 +34,7 @@ Les croisements :
 + **F2** : On obtient cette génération par retro reproduction de la génération F1. A cette étape on calcul les proportion de mutant/sauvage que l'ont obtient. Si l'on est proche des proportion medelienne on sais que le ou les mutations qui génère notre phétotipe sont proche l'une de l'autre. On est dans le cadre d'une ségrégation 3-1.
 + **F3** :
 
-Le ségrégation c'est la séparation des phénotype grave a une decendance, on sépart les trait recessif des parents.
+Le ségrégation c'est la séparation des phénotype grave a une decendance, on sépart les trait recessif des parents. -->
 
 ### Objectifs
 
@@ -106,4 +112,3 @@ Présentation de Fabrice Besnard
 ### Maitre d'oeuvre
 
 présentation de l'équipe d'étudiant
->>>>>>> a9722af3ec6722ffedbace883f8bc7ab116167ce
