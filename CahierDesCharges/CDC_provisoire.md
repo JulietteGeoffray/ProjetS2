@@ -14,9 +14,9 @@ Elle peut être provoqué a l'aide de mutagène tel que les EMS: agents chimique
 
 Provoquer des mutations dans un organisme d’Intérêt permet entre autre de localisé les gènes d’intérêt et ainsi de la cartographier. On va comparer grâce a la génétique mendélienne des organisme dit sauvage et d'autre dit mutant. Les organisme sauvage sont des organisme présentant des phénotype et de génotype généraux, présent en grande quantité naturellement. Les phénotype et génotype mutant sont des organisme qui ne pourrais pas survivre dans leurs milieu naturel. Par exemple une plante mutante qui ne pourrais pas fabriquer de fleur mais seulement des feuilles.
 
-Dans cette analyse nous utiliserons des plantes qui sont capable de se reproduire avec elle même (selfing). Ce qui va nous être très être très utiles.
+Dans cette analyse nous utiliserons des plantes qui sont capable de se reproduire avec elle même (selfing ou self-fertilization). Ce qui va nous être très être très utiles.
 
-La question principale que l'on se pose est comme trouver la position de la mutation que l'on cherche? Par exemple on cherche le ou les gènes responsable de la couleurs des feuilles. On va muter un grand nombre de plantes et si par chance on se rend compte que l'un des phénotype a une couleur de feuille différente on a toucher ce ou ces gènes d’intérêt. On va alors procéder par croisement pour essayer de retrouver le locus de notre mutation.
+La question principale que l'on se pose est comme trouver la position de la mutation que l'on cherche? Par exemple on cherche le ou les gènes résponsable de la couleurs des feuilles. On va muter un grand nombre de plantes et si par chanche on se rend compte que l'un des pénotype a une couleur de feuille différente on a toucher ce ou ces gènes d'intéret. On va alors procéder par croissement pour esayer de retrouer le locus de notre mutation.
 
 Les croisements :
 
@@ -28,7 +28,7 @@ Les croisements :
 + **F2** : On obtient cette génération par retro reproduction de la génération F1. A cette étape on calcul les proportion de mutant/sauvage que l'ont obtient. Si l'on est proche des proportion medelienne on sais que le ou les mutations qui génère notre phétotipe sont proche l'une de l'autre. On est dans le cadre d'une ségrégation 3-1.
 + **F3** :
 
-Le ségrégation c'est la séparation des phénotype grave a une descendance, on sépare les trait récessif des parents.
+Le ségrégation c'est la séparation des phénotype grave a une decendance, on sépart les trait recessif des parents.
 
 ### Objectifs
 
@@ -44,7 +44,8 @@ description du pipeline du guars.
 
 ### Critère d'acceptabilité du produit
 
-Afin de répondre a la problématique une interface graphique sera développer. Elle devra permettre la rédaction du formulaire en entrée de pipeline, l’exécution du pipeline et enfin la visualisation des résultats de sorties.
+Afin de répondre a la problématique une interface graphique sera développer. Elle devra permettre la rédaction du formulaire en entrée de pipeline, l'éxécution du pipeline et enfin la visualisation des résultats de sorties.
+
 
 ## Expression des besoins
 
@@ -63,13 +64,20 @@ Les fonctionnalité que doit remplir le code permettant la sortie des résultats
 
 ### besoins non fonctionnels
 
+
 L'interface développer est réaliser sous le système d'exploitation Linux, ils comprendrons des parties en Shell, python et "librairie graphique python".
+
+L'interface développer est réaliser sous le système d'exploitation lunux, ils comprendrons des parties en shell, python et "librairie graphique python".
+
 
 ## Contraintes
 
 ### Délais
 
 Le projet s'organise sur une période de 4 semaines. Il débutera le lundi 5 février et prendra fin le vendredi 2 mars. Un cahier des charges définitif devra être présenter le lundi 12 février.
+
+Le projet s'organise sur une période de 4 semaines. Il débutera le lundi 5 février et prendra fin le vendredi 2 mars. Un cachier des charges définitif devra être présenter le lundi 12 février.
+
 
 ### Autres contraintes
 
@@ -92,3 +100,10 @@ Ce projet nous a été proposé par Fabrice Besnard, biologiste rattaché a l’
 ### Maitre d'oeuvre
 
 Pour réaliser ce projet nous serons trois étudiants en Master 1 de bio-informatique de l'Université Claude Bernard Lyon 1 : Juliette Geoffray, Eric Cumunnel et Hermes Paraqindes.
+
+Présentation de Fabrice Besnard
+
+### Maitre d'oeuvre
+
+présentation de l'équipe d'étudiant
+>>>>>>> a9722af3ec6722ffedbace883f8bc7ab116167ce
