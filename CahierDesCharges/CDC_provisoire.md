@@ -114,7 +114,7 @@ Le délivrable final devra être rendu le 29 mars 2018.
 
 ### Planification
 
-Ajouter l'image du diagramme de Gantt.
+![gantt](gantt.png)
 
 ### Plan d'assurance qualité
 
