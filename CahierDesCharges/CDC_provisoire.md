@@ -1,26 +1,25 @@
 # Cahier des charges
 
-<!-- Version brouillon hésiter pas a la modifier ou a mettre des commentaires pour qu'on en discute :) -->
+<!-- Version brouillon n'hésitez pas à la modifier ou à mettre des commentaires pour qu'on en discute :) -->
 
 ## Présentation du projet
 
 ### Contexte
 
-La mutagenèse est un processus par lequel l'information génétique d'un organisme donc de son ADN est modifiée, ce qui entraîne une mutation.
+La mutagenèse est un processus par lequel l'information génétique d'un organisme, et donc celle de son ADN est modifiée, ce qui entraîne une mutation.
 
-L'apparition des mutants dans une population est un phénomene rare avec une très faible probabilité. Afin d'augmenter cette probabilité, les organismes peuvent être traiter par des agents mutagènes qui vont introduire des mutations (remplacement, modification ou endommagement) sur l'organisme de manière aléatoire. Les agents mutagènes peuvent être de nature chimique comme EMS (_Méthanesulfonate d'éthyle_),de nature physique comme la lumière ultraviolette et les radiations ionisantes ou de nature bactérienne pathogenique qui contienne des plasmides (ex _T DNA_) capable de s'integrer au génome de l'hôte.
+L'apparition des mutants dans une population est un phénomène rare avec une très faible probabilité. Afin d'augmenter cette probabilité, les organismes peuvent être traités par des agents mutagènes qui vont introduire des mutations (remplacement, modification ou endommagement) sur l'organisme de manière aléatoire. Ces agents mutagènes peuvent être de nature chimique comme EMS (_Méthanesulfonate d'éthyle_),de nature physique comme la lumière ultraviolette et les radiations ionisantes ou de nature bactérienne pathogènique contenant des plasmides (ex: _T DNA_) capables de s'intègrer au génome de l'hôte.
 
-Provoquer des mutations dans un organisme d’intérêt permet de localiser les gènes d’intérêts, de les cartographier et d'en déduire des informations sur le rôle des gènes. Identification des mutations responsables du phénotype du mutant constitue le principe base de la "génétique classique". La méthode utilisée pour identifier la mutation recherchée est celle du clonage positionnel.
+Provoquer des mutations dans un organisme d’intérêt permet de localiser les gènes d’intérêts, de les cartographier et d'en déduire des informations sur le rôle des gènes. L'identification des mutations responsables du phénotype du mutant constitue le principe de base de la "génétique classique". La méthode utilisée pour identifier la mutation recherchée est celle du clonage positionnel.
 
-C'est une méthode utilisée dans les cas où on ne connaît pas ni la séquence, ni la fonction du gène mais dont la mutation est supposé être à l'origine d'un caractere phénotypique. Un croisement avec une lignée génétiquement différente qui n’a pas le phénotype mutant est réalisé. Suite au croisement il est necessaire de génotyper un grand nombre d'individu et cela est un facteur fastidieux et qui prend beaucoup de temps. La révolution dans les nouvelles technologies de séquençage et d'assemblage du génome a facilité la tâche. Aujourd'hui on peut sequencer plusieurs mutants en même temps et analyser les variations génomique sur tout le génome en une seule fois.
+C'est une méthode utilisée dans les cas où on ne connaît ni la séquence, ni la fonction du gène mais dont la mutation est supposée être à l'origine d'un caractère phénotypique. Un croisement avec une lignée génétiquement différente n'ayant pas le phénotype mutant est réalisé. Suite au croisement, il est nécessaire de génotyper un grand nombre d'individu et cela est une tâche fastidieuse prenant beaucoup de temps. La révolution dans les nouvelles technologies de séquençage et d'assemblage du génome a facilité le processus. Aujourd'hui on peut séquencer plusieurs mutants en même temps et analyser les variations génomiques sur tout le génome en une seule fois.
 
-Toutefois c'est une analyse bioinformatique qui requiert de nombreuses étapes et l'utilisation de plusieurs programmes et logiciels distincts. La plupart des programmes utilisés sont adaptés à un organisme modèle ou à un « design » génétique et dépendent de
-serveurs distants. Afin de faciliter l'étape de cartographie et l'identification des mutations un pipeline appelé "_Andalusian_Mapping_" a été devloppé. Ce pipeline permet de travailler avec differentes espèces et souches de cartographie.
-
+Toutefois, c'est une analyse bioinformatique qui requiert de nombreuses étapes ainsi que l'utilisation de plusieurs programmes et logiciels distincts. La plupart des programmes utilisés sont adaptés à un organisme modèle ou à un « design » génétique, et dépendent de serveurs distants. Afin de faciliter l'étape de cartographie et l'identification des mutations, un pipeline appelé "_Andalusian_Mapping_" a été développé. Ce pipeline permet de travailler avec différentes espèces et souches de cartographie.
 
 
 
-<!--Dans cette analyse nous utiliserons des plantes qui sont capable de se reproduire avec elle même (selfing ou self-fertilization). Ce qui va nous être très être très utiles.
+
+<!--Dans cette analyse nous utiliserons des plantes qui sont capables de se reproduire avec elle même (selfing ou self-fertilization). Ce qui va nous être très être très utiles.
 
 La question principale que l'on se pose est comme trouver la position de la mutation que l'on cherche? Par exemple on cherche le ou les gènes résponsable de la couleurs des feuilles. On va muter un grand nombre de plantes et si par chanche on se rend compte que l'un des pénotype a une couleur de feuille différente on a toucher ce ou ces gènes d'intéret. On va alors procéder par croissement pour esayer de retrouer le locus de notre mutation.
 
@@ -38,11 +37,11 @@ Le ségrégation c'est la séparation des phénotype grâce a une descendance, o
 -->
 ### Objectifs
 
-L’objectif principale de ce projets consiste à créer une interface pour le remplissage d'un formulaire nécessaire au lancement du pipeline développer et d'une interface permettant un affichage claire des résultats de sortie.
+L’objectif principal de ce projet consiste à créer une interface pour le remplissage d'un formulaire nécessaire au lancement du pipeline développé et d'une interface permettant un affichage clair des résultats de sortie.
 
-On cherchera dans un premier temps a fournir un formulaire simple ou l'on devra renseigner tout les champs puis on vise l'implémentation, dans la mesure du possible, le remplissage automatique de certain champs si l'utilisateur le souhaite. Certain champs pourrons être remplis via des scripts développer par le maîtrise d’œuvre.
+On cherchera dans un premier temps à fournir un formulaire simple où l'on devra renseigner tous les champs. Puis on vise l'implémentation, dans la mesure du possible, le remplissage automatique de certains champs si l'utilisateur le souhaite. Certains champs pourront être remplis via des scripts développés par le maître d’œuvre.
 
-Il sera aussi appréciable, mais optionnel, d’apporter des conseils sur l’amélioration du pipeline en lui même. Comme facilité l’installation et des dépendance lié au logiciels utilisé.
+Il serait aussi appréciable, mais optionnel, d’apporter des conseils sur l’amélioration du pipeline en lui-même. Par exemple : faciliter l’installation des dépendances liées aux logiciels utilisés.
 
 ### Description de l'existant
 
@@ -75,9 +74,9 @@ _A compléter_
 
 ### Critère d'acceptabilité du produit
 
-Afin de répondre a la problématique une interface graphique sera développer. Elle devra permettre la rédaction du formulaire en entrée de pipeline, l’exécution du pipeline et enfin la visualisation des résultats de sorties.
+Afin de répondre à la problématique, une interface graphique sera développée. Elle devra permettre la rédaction du formulaire en entrée de pipeline, son exécution et enfin, la visualisation des résultats de sorties.
 
-Le logiciel doit être facile d'utilisation et informatif.
+Le logiciel devra être facile d'utilisation et informatif.
 
 ## Expression des besoins
 
@@ -85,18 +84,18 @@ Le logiciel doit être facile d'utilisation et informatif.
 
 Fonctionnalité du code :
 
-Les fonctionnalité que doit remplir le code permettant la rédaction du fichier d'entrée du pipeline :
+Les fonctionnalités que doit remplir le code permettant la rédaction du fichier d'entrée du pipeline :
 
 + remplir les champs du fichier source (configuration du pipeline)
-+ Dans un second temps on pourra prévoir un remplissage de certain champs automatiquement via des pipelines développer par le maîtrise d'ouvrage.
++ Dans un second temps, on pourra prévoir un remplissage de certains champs automatiquement via des pipelines développés par le maître d'ouvrage.
 
-Les fonctionnalité que doit remplir le code permettant la sortie des résultats :
+Les fonctionnalités que doit remplir le code permettant la sortie des résultats :
 
-+ Visualisation claire des graphique d’intérêts.
++ Visualisation claire des graphiques d’intérêt.
 
 ### besoins non fonctionnels
 
-L'interface développer est réaliser sous le système d'exploitation Linux, il comprendra des parties en Shell, python et on utilisera une librairie graphique python.
+L'interface développée est réalisée sous le système d'exploitation Linux, il comprendra des parties en Shell, en Python et on utilisera également *pyQt*, une librairie graphique python.
 
 ## Contraintes
 
@@ -104,7 +103,7 @@ L'interface développer est réaliser sous le système d'exploitation Linux, il 
 
 Le projet s'organise sur une période de 4 semaines. Il débutera le lundi 5 février et prendra fin le vendredi 2 mars. Le projet pourra être continué durant une période de cours allant du 5 au 29 mars.
 
-Un cahier des charges définitif devra être présenter le lundi 12 février.
+Un cahier des charges définitif devra être présenté le lundi 12 février.
 
 Le délivrable final devra être rendu le 29 mars 2018.
 
@@ -118,9 +117,10 @@ Le délivrable final devra être rendu le 29 mars 2018.
 
 ### Plan d'assurance qualité
 
-Le contrôle qualité de l'interface développée sera sa bonne exécution, sans erreur et en étant le plus facile et agréable à utiliser.
+Le contrôle qualité de l'interface développée consistera en une bonne exécution, simple et sans erreurs.
+<!-- Jeu test allegé -->
 
-* Le logiciel sera tester par des membres de differents équipes.
+* Le logiciel sera testé par des membres de différentes équipes :
 * Validation par _Dr Besnard_
 * Utilisation du logiciel par des utilisateurs non initiés en informatique
 
@@ -128,8 +128,8 @@ Le contrôle qualité de l'interface développée sera sa bonne exécution, sans
 
 ### Maîtrise d'ouvrage
 
-Ce projet nous a été proposé par Fabrice Besnard, biologiste rattaché a l’École normale supérieur de Lyon (ENS), travaillant dans le Laboratoire Reproduction et Développement des Plantes (RDP).
+Ce projet nous a été proposé par Fabrice Besnard, biologiste rattaché à l’École Normale Supérieur de Lyon (ENS), travaillant au Laboratoire de Reproduction et Développement des Plantes (RDP).
 
 ### Maître d’œuvre
 
-Pour réaliser ce projet nous serons trois étudiants en Master 1 de Bio-informatique a Lyon 1 : Juliette Geoffray, Hermes Paraqindes et Eric Cumunnel.
+Pour réaliser ce projet, nous serons trois étudiants en Master 1 de Bio-informatique à Lyon 1 : Juliette Geoffray, Hermes Paraqindes et Eric Cumunel.
