@@ -102,18 +102,18 @@ L'utilisation de ce pipeline se base sur un fichier de configuration à remplir 
 Description du pipeline dans son ensemble :
 \begin{enumerate}
 
-\item Mapping et sorting des lectures contre le gènome de référence avec BWA
-\item Ajout des informations de groupe de lectures
-\item Merge des duplicats de lecture détectés
-\item Indexation du fichier BAM
-\item Génération de statistiques d'alignement (fréquence, couverture)
-\item Réalignement des lectures en prenant en compte les informations récoltées jusqu'ici
-\item Base Quality Score Recalibration avec génération de graphique et de statistique de qualité
-\item Variant Calling
-\item Réalisation de la cartographie des mutations à l'aide des SNP connus pour chaque scaffold
-\item Détection des meilleurs locus candidats grâce aux annotations.
-\item Génération des graphiques à l'aide d'un script R et d'un fichier contenant les locus les plus probables d'être responsables de la mutation
-\end{enumerate}
+%\item Mapping et sorting des lectures contre le gènome de référence avec BWA
+%\item Ajout des informations de groupe de lectures
+%\item Merge des duplicats de lecture détectés
+%\item Indexation du fichier BAM
+%\item Génération de statistiques d'alignement (fréquence, couverture)
+%\item Réalignement des lectures en prenant en compte les informations récoltées jusqu'ici
+%\item Base Quality Score Recalibration avec génération de graphique et de statistique de qualité
+%\item Variant Calling
+%\item Réalisation de la cartographie des mutations à l'aide des SNP connus pour chaque scaffold
+%\item Détection des meilleurs locus candidats grâce aux annotations.
+%\item Génération des graphiques à l'aide d'un script R et d'un fichier contenant les locus les plus probables d'être responsables de la mutation
+%\end{enumerate}
 
 
 \item La première étape consiste à aligner les reads contre un génome de référence et à trier le fichier de sortie (.bam) pour les besoins d'un logiciel intervenant plus tard (PICARD). 
@@ -139,8 +139,6 @@ Le logiciel devra être simple d'utilisation et les résultats facilement interp
 
 \section{Expression des besoins}
 \subsection{Besoins fonctionnels}
-
-\newpage
 
 \subsubsection{Fonctionnalité du logiciel}
 
@@ -186,7 +184,7 @@ Le délivrable final devra être rendu le 29 mars 2018.
 \section{Déroulement du projet}
 \subsection{Planification}
 
-\includegraphics[scale=0.6]{gantt5.png}
+\includegraphics[scale=0.6]{gantt.png}
 
 \subsection{Plan d'assurance qualité}
 

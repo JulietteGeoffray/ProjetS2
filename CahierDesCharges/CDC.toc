@@ -5,16 +5,16 @@
 \contentsline {subsection}{\numberline {1.4}Crit\IeC {\`e}res d'acceptabilit\IeC {\'e} du produit}{4}{subsection.1.4}
 \contentsline {section}{\numberline {2}Expression des besoins}{5}{section.2}
 \contentsline {subsection}{\numberline {2.1}Besoins fonctionnels}{5}{subsection.2.1}
-\contentsline {subsubsection}{\numberline {2.1.1}Fonctionnalit\IeC {\'e} du logiciel}{6}{subsubsection.2.1.1}
-\contentsline {subsubsection}{\numberline {2.1.2}Fonctionnalit\IeC {\'e} du code}{6}{subsubsection.2.1.2}
-\contentsline {subsection}{\numberline {2.2}Besoins non fonctionnels}{6}{subsection.2.2}
-\contentsline {section}{\numberline {3}Contraintes}{6}{section.3}
-\contentsline {subsection}{\numberline {3.1}D\IeC {\'e}lais}{6}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Autres contraintes}{7}{subsection.3.2}
-\contentsline {section}{\numberline {4}D\IeC {\'e}roulement du projet}{7}{section.4}
-\contentsline {subsection}{\numberline {4.1}Planification}{7}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Plan d'assurance qualit\IeC {\'e}}{7}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Responsabilit\IeC {\'e}s}{7}{subsection.4.3}
-\contentsline {subsubsection}{\numberline {4.3.1}Ma\IeC {\^\i }trise d'ouvrage}{7}{subsubsection.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.2}Ma\IeC {\^\i }trise d\IeC {\textquoteright }\IeC {\oe }uvre}{7}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {2.1.1}Fonctionnalit\IeC {\'e} du logiciel}{5}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}Fonctionnalit\IeC {\'e} du code}{5}{subsubsection.2.1.2}
+\contentsline {subsection}{\numberline {2.2}Besoins non fonctionnels}{5}{subsection.2.2}
+\contentsline {section}{\numberline {3}Contraintes}{5}{section.3}
+\contentsline {subsection}{\numberline {3.1}D\IeC {\'e}lais}{5}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Autres contraintes}{6}{subsection.3.2}
+\contentsline {section}{\numberline {4}D\IeC {\'e}roulement du projet}{6}{section.4}
+\contentsline {subsection}{\numberline {4.1}Planification}{6}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Plan d'assurance qualit\IeC {\'e}}{6}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Responsabilit\IeC {\'e}s}{6}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Ma\IeC {\^\i }trise d'ouvrage}{6}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Ma\IeC {\^\i }trise d\IeC {\textquoteright }\IeC {\oe }uvre}{6}{subsubsection.4.3.2}
 \contentsline {section}{\numberline {5}Bibliographie}{7}{section.5}
