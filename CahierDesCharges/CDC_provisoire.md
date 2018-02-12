@@ -38,11 +38,14 @@ Le ségrégation c'est la séparation des phénotype grâce a une descendance, o
 -->
 ### Objectifs
 
-L’objectif principal de ce projet consiste à créer une interface pour le remplissage d'un formulaire nécessaire au lancement du pipeline développé et d'une interface permettant un affichage clair des résultats de sortie.
+L'objectif général de ce projet est de rendre *Andalusian Mapping* plus accessible à la communauté scientifique, notamment pour les biologistes non-informaticiens, à la fois au niveau de la mise en place des outils du pipeline que de l'affichage des résultats.  
+Pour ce faire, plusieurs pistes peuvent se révéler intéressantes : 
 
-On cherchera dans un premier temps à fournir un formulaire simple où l'on devra renseigner tous les champs. Puis on vise l'implémentation, dans la mesure du possible, <!-- l'implémentation du --> le remplissage automatique de certains champs si l'utilisateur le souhaite. Certains champs pourront être remplis via des scripts développés par le maître d’œuvre.
+* Au niveau de la mise en place : incorporer le programme dans un docker contenant les dépendances logicielles nécessaires
+* Au niveau de l'importation des données de départ : intégrer une interface graphique permettant d'ajouter les fichiers plus aisément
+* Au niveau de l'exploitation des résultats finaux : créer une interface graphique et/ou une page HTML pour visualiser les différents résultats (sous la forme de graphes et de tableau)
+* Améliorer l'organisation du pipeline (optionnel) 
 
-Il serait aussi appréciable, mais optionnel, d’apporter des conseils sur l’amélioration du pipeline en lui-même. Par exemple : faciliter l’installation des dépendances liées aux logiciels utilisés.
 
 ### Description de l'existant
 
