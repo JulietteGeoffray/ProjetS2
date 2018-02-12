@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.26)  9 FEB 2018 13:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.26)  12 FEB 2018 11:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -521,8 +521,7 @@ Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
-))
-No file CDC.aux.
+)) (./CDC.aux)
 \openout1 = `CDC.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
@@ -539,6 +538,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -615,11 +615,12 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 12.
 LaTeX Info: Redefining \pageref on input line 12.
 LaTeX Info: Redefining \nameref on input line 12.
+
+(./CDC.out) (./CDC.out)
 \@outlinefile=\write3
 \openout3 = `CDC.out'.
 
-
-<logo.png, id=4, 803.0pt x 315.1775pt>
+ <logo.png, id=76, 803.0pt x 315.1775pt>
 File: logo.png Graphic file (type png)
  <use logo.png>
 Package pdftex.def Info: logo.png used on input line 16.
@@ -630,9 +631,10 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 33.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 33.
- [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logo.png>]
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logo.png>] (./CDC.toc)
 \tf@toc=\write4
 \openout4 = `CDC.toc'.
 
@@ -644,44 +646,79 @@ l.50 \newpage
               [1
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 72.
- [2]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 72.
+Overfull \hbox (4.12045pt too wide) in paragraph at lines 63--64
+[]\T1/cmr/m/n/12 Toutefois, c'est une anal-yse bio-informatique qui re-quiert d
+e nom-breuses étapes ainsi que l'utilisation
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 79--81
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 86.
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 86.
+
+<schemaPipeline.png, id=120, 278.03876pt x 572.1375pt>
+File: schemaPipeline.png Graphic file (type png)
+
+<use schemaPipeline.png>
+Package pdftex.def Info: schemaPipeline.png used on input line 116.
+(pdftex.def)             Requested size: 222.4313pt x 457.71062pt.
+ [3] [4 <./schemaPipeline.png>]
+<gantt.png, id=138, 806.01125pt x 315.1775pt>
+File: gantt.png Graphic file (type png)
+ <use gantt.png>
+Package pdftex.def Info: gantt.png used on input line 161.
+(pdftex.def)             Requested size: 483.61047pt x 189.10796pt.
+ [5 <./gantt.png>]
+Overfull \hbox (27.64597pt too wide) in paragraph at lines 185--187
+[]\T1/cmr/m/n/12 Galaxy | Pub-lished Page | CloudMap. Avail-able at: https://us
+egalaxy.org/u/gm2123/p/cloudmap.
+ []
+
+
+Overfull \hbox (18.2789pt too wide) in paragraph at lines 189--191
+[]\T1/cmr/m/n/12 MutMap - Ge-nomics & Breed-ing. Avail-able at: http://genome-e
+.ibrc.or.jp/home/bioinformatics-
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 197.
+[6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 197.
  (./CDC.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 72.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 72.
-
-
-Package rerunfilecheck Warning: File `CDC.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `CDC.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  DDBFA0AB64D98364ADF09733627CD875;1252.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 72.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 197.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 197.
+Package rerunfilecheck Info: File `CDC.out' has not changed.
+(rerunfilecheck)             Checksum: A4AB09F4496F002C2F543C3A4518BAAF;1194.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 197.
  ) 
 Here is how much of TeX's memory you used:
- 6138 strings out of 494910
- 87282 string characters out of 6179836
- 172744 words of memory out of 5000000
- 9356 multiletter control sequences out of 15000+600000
- 13913 words of font info for 33 fonts, out of 8000000 for 9000
+ 6211 strings out of 494910
+ 88206 string characters out of 6179836
+ 175848 words of memory out of 5000000
+ 9398 multiletter control sequences out of 15000+600000
+ 14597 words of font info for 34 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 29i,5n,43p,236b,333s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/etudiant/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </hom
+ 29i,5n,43p,722b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/etudiant/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </hom
 e/etudiant/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/etudia
 nt/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/etudiant/.texm
-f-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </home/etudiant/.texmf-var/fo
-nts/pk/ljfour/jknappen/ec/eccc1440.600pk> </home/etudiant/.texmf-var/fonts/pk/l
-jfour/jknappen/ec/ecrm1440.600pk> </home/etudiant/.texmf-var/fonts/pk/ljfour/jk
-nappen/ec/ecti1440.600pk> </home/etudiant/.texmf-var/fonts/pk/ljfour/jknappen/e
-c/ecbx2488.600pk> </home/etudiant/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm24
-88.600pk>
-Output written on CDC.pdf (3 pages, 81073 bytes).
+f-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/etudiant/.texmf-var/fo
+nts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </home/etudiant/.texmf-var/fonts/pk/l
+jfour/jknappen/ec/eccc1440.600pk> </home/etudiant/.texmf-var/fonts/pk/ljfour/jk
+nappen/ec/ecrm1440.600pk> </home/etudiant/.texmf-var/fonts/pk/ljfour/jknappen/e
+c/ecti1440.600pk> </home/etudiant/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx24
+88.600pk> </home/etudiant/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm2488.600pk
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on CDC.pdf (7 pages, 186828 bytes).
 PDF statistics:
- 256 PDF objects out of 1000 (max. 8388607)
- 75 compressed objects within 1 object stream
- 23 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 501 PDF objects out of 1000 (max. 8388607)
+ 187 compressed objects within 2 object streams
+ 40 named destinations out of 1000 (max. 500000)
+ 160 words of extra memory for PDF output out of 10000 (max. 10000000)
 
