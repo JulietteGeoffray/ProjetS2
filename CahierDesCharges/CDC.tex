@@ -64,13 +64,15 @@ Toutefois, c'est une analyse bio-informatique qui requiert de nombreuses étapes
 
 \subsection{Objectifs}
 
-L’objectif principal de ce projet consiste à créer une interface pour le remplissage d'un formulaire nécessaire au lancement du pipeline développé et d'une interface permettant un affichage clair des résultats de sortie.
+L'objectif général de ce projet est de rendre *Andalusian Mapping* plus accessible à la communauté scientifique, notamment pour les biologistes non-informaticiens, à la fois au niveau de la mise en place des outils du pipeline que de l'affichage des résultats.  
+Pour ce faire, plusieurs pistes peuvent se révéler intéressantes : 
 
-Il faudra que l'on créer un docker afin de faciliter l’installation du pipeline. 
-
-On cherchera dans un premier temps à fournir un formulaire simple où l'on devra renseigner tous les champs. Puis on vise l'implémentation, dans la mesure du possible, de certains champs qui pourront être remplis via des scripts développés par le maître d’œuvre.
-
-Il serait aussi appréciable, mais optionnel, d’apporter des conseils sur l’amélioration du pipeline en lui-même. Par exemple : faciliter l’installation des dépendances liées aux logiciels utilisés.
+\begin{itemize}
+\item Au niveau de la mise en place : incorporer le programme dans un docker contenant les dépendances logicielles nécessaires
+\item Au niveau de l'importation des données de départ : intégrer une interface graphique permettant d'ajouter les fichiers plus aisément
+\item Au niveau de l'exploitation des résultats finaux : créer une interface graphique et/ou une page HTML pour visualiser les différents résultats (sous la forme de graphes et de tableau)
+\item Améliorer l'organisation du pipeline (optionnel) 
+\end{itemize}
 
 \subsection{Description de l'existant}
 
@@ -124,7 +126,11 @@ Le logiciel devra être facile d'utilisation et informatif.
 
 \newpage
 
-Fonctionnalité du code :
+\subsubsection{Fonctionnalité du logiciel}
+
+Le logiciel devra être facile et rapide à installer par un utilisateur même sans beaucoup de connaissance informatique. 
+
+\subsubsection{Fonctionnalité du code}
 
 Les fonctionnalités que doit remplir le code permettant la rédaction du fichier d'entrée du pipeline:
 
@@ -133,15 +139,18 @@ Les fonctionnalités que doit remplir le code permettant la rédaction du fichie
 \begin{itemize}
 \item Génome de référence
 \item Fastq en pairend 
-\item Spécification des reads (Illumina ...)
+\item Liste d'allèle connu entre l'individu sauvage et l’individu pas encore muté. Pour pouvoir les supprimer lors de l'appel de variant entre l'organisme sauvage et l'organisme muté. 
+\item Données d'information sur les read (comme la technique de séquençage utilisé ex: Illumina, le SNP utilisé pour repérer la région muté...)
+\item Le nom de sortie du dossier et de l’extension ajouter au fichier.
 \end{itemize}
-\item Dans un second temps, on pourra prévoir un remplissage de certains champs automatiquement via des pipelines développés par le maître d'ouvrage.
+\item Dans un second temps, on pourra prévoir un remplissage de certains champs automatiquement via des pipelines développés par le maître d'ouvrage. Comme la génération de la liste des variant entre l'organisme sauvage et l'organisme pas encore muté.
 \end{itemize}
 
 Les fonctionnalités que doit remplir le code permettant la sortie des résultats: 
 
 \begin{itemize}
-\item Visualisation claire des graphiques d’intérêt.
+\item Visualisation claire des données et des graphiques d’intérêt.
+\item Un fichier de sortie exportable comme une page html, pour facilité le partage de ces résultats. 
 \end{itemize}
 
 \subsection{Besoins non fonctionnels}
