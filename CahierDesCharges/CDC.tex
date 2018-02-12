@@ -94,26 +94,22 @@ Une mise en place de ces logiciels est cependant nécessaire :
 \end{itemize}
 
 Description du pipeline dans son ensemble :
+
+Ce pipeline prend en entré un fichier de configuration qui permet entre autre de renseigner les liens avec les logiciels utilisé, les fichier \textit{fastq}, le génome de référence et une liste de variant prédéfinie, qui sont les fichier de départ de l'analyse et le nom du dossier ou serons ajouter tout les fichiers créer par le pipeline. 
+
 \begin{enumerate}
-\item Ce pipeline prend en entré un fichier de configuration qui permet entre autre de renseigner les liens avec les logiciels utilisé, les fichier \textit{fastq} qui sont les fichier de départ de l'analyse et le nom du dossier ou serons ajouter tout les fichiers créer par le pipeline. 
-%etape 1
-\item La première étape consiste à aligné les reads contre un génome de référence, a réaliser les contrôles de qulité sur ces reads et a trier le fichier bam de sortie pour les besoins d'un logiciel interveant plus tard. 
-%etape 2
-\item Ensuite on ajoute des information de groupes aux reads.
-%etape 3
-\item L'étape 3 consiste au merge des séquence et la suppression des reads dupliqué. 
-%etape 4
-\item On indexe le fichier bam pour les besoins d'un logiciel interveant plus tard. 
-%etape 5
-\item Génération de statistiques
-%etape 6
-\item On réaline les reads en prenant en compte les informations récolter jusqu'ici dans le pipeline
-%etape 7
-\item On réalise une étape de Base Quality Score Recalibration 
-%etpae 8
+\item La première étape consiste à aligné les reads contre un génome de référence et a trier le fichier de sortie (.bam) pour les besoins d'un logiciel intervenant plus tard (picard). 
+\item Ensuite on ajoute des informations de groupes aux reads.
+\item L'étape suivante consiste au merge des séquence et la suppression des reads dupliqué. 
+\item On indexe le fichier bam pour les besoins d'un logiciel intervenant plus tard (picard). 
+\item Génération de statistiques.
+\item On réaligne les reads en prenant en compte les informations récolter jusqu'ici dans le pipeline
+\item On réalise une étape de Base Quality Score Recalibration avec génération de graphique et de statistique de qualité.
+\item On réalise l'appel de variant. 
+\item On va réaliser la cartographie de la mutation et on calcul la fréquence de l'allèle JU170 pour chaque scafold. 
+\item On va trouver les meilleurs locus candidats grâce au annotation. 
+\item On va générer des graphiques a l'aide de R et un fichier texte comprenant les locus responsable de la mutation les plus probables. 
 \end{enumerate}
-
-
 
 \begin{center} \includegraphics[scale=0.8]{schemaPipeline.png} \end{center}
 
@@ -133,7 +129,12 @@ Fonctionnalité du code :
 Les fonctionnalités que doit remplir le code permettant la rédaction du fichier d'entrée du pipeline:
 
 \begin{itemize}
-\item remplir les champs du fichier source (configuration du pipeline)
+\item remplir les champs du fichier source (configuration du pipeline) :
+\begin{itemize}
+\item Génome de référence
+\item Fastq en pairend 
+\item Spécification des reads (Illumina ...)
+\end{itemize}
 \item Dans un second temps, on pourra prévoir un remplissage de certains champs automatiquement via des pipelines développés par le maître d'ouvrage.
 \end{itemize}
 
