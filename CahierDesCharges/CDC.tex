@@ -52,15 +52,15 @@ d’entrée/sortie. \\[0.4cm] }
 \section{Présentation du projet}
 \subsection{Contexte}
 
-La mutagenèse est un processus par lequel l'information génétique d'un organisme, et donc celle de son ADN est modifiée, ce qui entraîne une mutation.
+La mutagenèse est un processus par lequel l'information génétique d'un organisme, et donc celle de son ADN est modifiée, entrainant une mutation.
 
-L'apparition des mutants dans une population est un phénomène rare et donc avec une très faible probabilité de se produire. Afin d'augmenter cette probabilité, les organismes peuvent être traités par des agents mutagènes qui vont introduire des mutations (remplacement, modification ou endommagement) sur l'organisme de manière aléatoire. Ces agents mutagènes peuvent être de nature chimique comme EMS (Méthanesulfonate d'éthyle),de nature physique comme la lumière ultraviolette et les radiations ionisantes ou de nature bactérienne pathogénique contenant des plasmides (ex: T DNA) capables de d’intégrer au génome de l'hôte une séquence ADN (capable de s'exprimer ou non). 
+L'apparition des mutants dans une population est un phénomène rare et possède donc une très faible probabilité de se produire. Afin d'augmenter cette probabilité, les organismes peuvent être traités par des agents mutagènes qui vont induire des mutations (remplacement, modification ou endommagement) sur l'organisme de manière aléatoire. Ces agents mutagènes peuvent être de nature chimique, comme l'EMS (Méthanesulfonate d'éthyle),de nature physique, comme la lumière ultraviolette et les radiations ionisantes, ou de nature bactérienne pathogénique contenant des plasmides (ex: T DNA) capables de d’intégrer au génome de l'hôte une séquence ADN (capable de s'exprimer ou non). 
 
 Provoquer des mutations dans un organisme d’intérêt permet de localiser les gènes d’intérêts, de les cartographier et d'en déduire des informations sur le rôle des gènes. L'identification des mutations responsables du phénotype du mutant constitue le principe de base de la génétique mendélienne. La méthode utilisée pour identifier la mutation recherchée est celle du clonage positionnel.
 
-C'est une méthode utilisée dans les cas où on ne connaît ni la séquence, ni la fonction du gène mais dont la mutation est supposée être à l'origine d'un caractère phénotypique visible. Un croisement avec une lignée génétiquement différente n'ayant pas le phénotype mutant est réalisé. Suite au croisement, il est nécessaire de génotyper un grand nombre d'individu et cela est une tâche fastidieuse prenant beaucoup de temps. La révolution dans les nouvelles technologies de séquençage et d'assemblage du génome a facilité le processus. Aujourd'hui on peut séquencer plusieurs mutants en même temps et analyser les variations génomiques sur tout le génome en une seule fois.
+Cette méthode est utilisée dans les cas où l'on ne connaît ni la séquence, ni la fonction du gène mais dont la mutation est supposée être à l'origine d'un caractère phénotypique visible. Un croisement avec une lignée génétiquement différente n'ayant pas le phénotype mutant est réalisé. Suite au croisement, il est nécessaire de génotyper un grand nombre d'individu et cela est une tâche longue et fastidieuse. La révolution dans les nouvelles technologies de séquençage et d'assemblage du génome a cependant facilité le processus. Aujourd'hui nous pouvons séquencer plusieurs mutants simultanément et détecter des variations génomiques sur tout le génome en une seule fois.
 
-Toutefois, c'est une analyse bio-informatique qui requiert de nombreuses étapes ainsi que l'utilisation de plusieurs programmes et logiciels distincts. La plupart des programmes utilisés sont adaptés à un organisme modèle ou à un « design » génétique, et dépendent de serveurs distants. Afin de faciliter l'étape de cartographie et l'identification des mutations, un pipeline appelé \textit{Andalusian\_Mapping} a été développé. Ce pipeline permet de travailler avec différentes espèces et souches de cartographie.
+Toutefois, ce processus est une analyse bio-informatique qui requiert de nombreuses étapes ainsi que l'utilisation de plusieurs programmes. La plupart des programmes utilisés sont adaptés à un organisme modèle ou à un « design » génétique, et dépendent de serveurs distants. Afin de faciliter l'étape de cartographie et l'identification des mutations, un pipeline appelé \textit{Andalusian\_Mapping} a été développé. Ce pipeline permet de travailler avec différentes espèces et souches de cartographie.
 
 \subsection{Objectifs}
 
@@ -69,20 +69,20 @@ L'objectif général de ce projet est de rendre \textit{Andalusian\_Mapping} plu
 Pour ce faire, plusieurs pistes peuvent se révéler intéressantes : 
 
 \begin{itemize}
-\item Au niveau de la mise en place : incorporer le programme dans un docker contenant les dépendances logicielles nécessaires
-\item Au niveau de l'importation des données de départ : intégrer une interface graphique permettant d'ajouter les fichiers plus aisément
-\item Au niveau de l'exploitation des résultats finaux : créer une interface graphique et/ou une page HTML pour visualiser les différents résultats (sous la forme de graphes et de tableau)
-\item Améliorer l'organisation du pipeline (optionnel) 
+\item Au niveau de la mise en place : incorporer le programme dans un docker contenant les dépendances logicielles nécessaires.
+\item Au niveau de l'importation des données de départ : intégrer une interface graphique permettant d'ajouter les fichiers plus aisément.
+\item Au niveau de l'exploitation des résultats finaux : créer une interface graphique et/ou une page HTML pour visualiser les différents résultats (sous la forme de graphes et de tableau).
+\item Améliorer l'organisation du pipeline (optionnel).
 \end{itemize}
 
 \subsection{Description de l'existant}
 
 Récemment, Cloudmap, un pipeline automatique de mapping-by-sequencing et d'identification de mutants a été développé et intégré à Galaxy, qui est une interface utilisateur simple et intuitive.
 Cependant, ce pipeline ne permet pas à ce jour de travailler avec des génomes de référence \textit{exotiques}, étant donné que seuls les gènomes modèles comme \textit{Caenorhabditis elegans} ou \textit{Arabidopsis thaliana} sont disponibles sur Galaxy.
-\textit{Andalusian Mapping} a donc été développé dans le but de fournir un outil similaire afin de travailler avec une gamme plus vaste d'organisme.
+\textit{Andalusian Mapping} a donc été développé dans le but de fournir un outil similaire afin de travailler avec une gamme plus vaste d'organismes.
 
 \textit{Andalusian Mapping} est un pipeline permettant d'effectuer une cartographie par séquençage afin d'identifier les régions les plus susceptibles d'être responsables d'une mutation.
-Ce pipeline est un script bash permettant l'utilisation en une seule étape de plusieurs outils bioinformatiques. \\
+Ce pipeline est constitué d'un script bash permettant l'utilisation en une seule étape de plusieurs outils bioinformatiques. \\
 Il tourne sous environnement Linux et Mac. La mise en place de différents logiciels est cependant fastidieuse et nécessaire au fonctionnement de ce pipeline.
 
 Logiciels requis :
@@ -97,88 +97,90 @@ Logiciels requis :
 \end{itemize}
 
 
-L'utilisation de ce pipeline se base sur un fichier de configuration à remplir préalablement contenant les chemins vers les exécutables des logiciels utilisés, les fichiers \textit{fastq}, le génome de référence, une liste de variants prédéfinie ainsi qu'un répertoire dans lequel seront envoyés les résultats intermédiaires et finaux.\\
+L'utilisation de ce pipeline se base sur un fichier de configuration à remplir préalablement. Celui-ci contient les chemins vers les exécutables des logiciels utilisés, les fichiers \textit{fastq}, le génome de référence, une liste de variants prédéfinie ainsi qu'un répertoire dans lequel seront envoyés les résultats intermédiaires et finaux.\\
 
 Description du pipeline dans son ensemble :
 \begin{enumerate}
-
-%\item Mapping et sorting des lectures contre le gènome de référence avec BWA
-%\item Ajout des informations de groupe de lectures
-%\item Merge des duplicats de lecture détectés
-%\item Indexation du fichier BAM
-%\item Génération de statistiques d'alignement (fréquence, couverture)
-%\item Réalignement des lectures en prenant en compte les informations récoltées jusqu'ici
-%\item Base Quality Score Recalibration avec génération de graphique et de statistique de qualité
-%\item Variant Calling
-%\item Réalisation de la cartographie des mutations à l'aide des SNP connus pour chaque scaffold
-%\item Détection des meilleurs locus candidats grâce aux annotations.
-%\item Génération des graphiques à l'aide d'un script R et d'un fichier contenant les locus les plus probables d'être responsables de la mutation
-%\end{enumerate}
-
-
-\item La première étape consiste à aligner les reads contre un génome de référence et à trier le fichier de sortie (.bam) pour les besoins d'un logiciel intervenant plus tard (PICARD). 
-\item Ensuite on ajoute des informations de groupes aux reads.
-\item L'étape suivante consiste au merge des séquence et la suppression des reads dupliqué. 
-\item On indexe le fichier bam pour les besoins d'un logiciel intervenant plus tard (picard). 
-\item Génération de statistiques.
-\item On réaligne les reads en prenant en compte les informations récolter jusqu'ici dans le pipeline
-\item On réalise une étape de Base Quality Score Recalibration avec génération de graphique et de statistique de qualité.
-\item On réalise l'appel de variant. 
-\item On va réaliser la cartographie de la mutation et on calcul la fréquence de l'allèle JU170 pour chaque scafold. 
-\item On va trouver les meilleurs locus candidats grâce au annotation. 
-\item On va générer des graphiques a l'aide de R et un fichier texte comprenant les locus responsable de la mutation les plus probables. 
+\item Mapping et sorting des lectures contre le gènome de référence avec BWA
+\item Ajout des informations de groupe de lectures
+\item Merge des duplicats de lecture détectés
+\item Indexation du fichier BAM
+\item Génération de statistiques d'alignement (fréquence, couverture)
+\item Réalignement des lectures en prenant en compte les informations récoltées jusqu'ici
+\item Base Quality Score Recalibration avec génération de graphiques et de statistique concernant la qualité des alignements
+\item Variant Calling
+\item Réalisation de la cartographie des mutations à l'aide des SNP connus pour chaque scaffold
+\item Détection des meilleurs locus candidats à l'aide des annotations.
+\item Génération des graphiques à l'aide d'un script R et d'un fichier contenant les locus les plus probables d'être responsables de la mutation
 \end{enumerate}
+
+
+%\item La première étape consiste à aligner les reads contre un génome de référence et à trier le fichier de sortie (.bam) pour les besoins d'un logiciel intervenant plus tard (PICARD). 
+%\item Ensuite on ajoute des informations de groupes aux reads.
+%\item L'étape suivante consiste au merge des séquence et la suppression des reads dupliqué. 
+%\item On indexe le fichier bam pour les besoins d'un logiciel intervenant plus tard (picard). 
+%\item Génération de statistiques.
+%\item On réaligne les reads en prenant en compte les informations récolter jusqu'ici dans le pipeline
+%\item On réalise une étape de Base Quality Score Recalibration avec génération de graphique et de statistique de qualité.
+%\item On réalise l'appel de variant. 
+%\item On va réaliser la cartographie de la mutation et on calcul la fréquence de l'allèle JU170 pour chaque scafold. 
+%\item On va trouver les meilleurs locus candidats grâce au annotation. 
+%\item On va générer des graphiques a l'aide de R et un fichier texte comprenant les locus responsable de la mutation les plus probables. 
+%\end{enumerate}
 
 \begin{center} \includegraphics[scale=0.8]{schemaPipeline.png} \end{center}
 
 \subsection{Critères d'acceptabilité du produit}
 
-Afin de répondre à la problématique, une interface graphique sera développée. Elle devra permettre la rédaction du formulaire en entrée de pipeline, son exécution et enfin, la visualisation des résultats de sorties.
-
-Le logiciel devra être simple d'utilisation et les résultats facilement interprétables.
+Afin de répondre à la problématique, le pipeline sera remanié et une interface graphique sera développée. Elle permettra de contourner l'étape fastidieuse du remplissage du formulaire, renseigner l'utilisateur du bon déroulement de l'exécution du pipeline et enfin, faciliter la visualisation des résultats.
 
 \section{Expression des besoins}
 \subsection{Besoins fonctionnels}
 
 \subsubsection{Fonctionnalité du logiciel}
 
-Le logiciel devra remplir la même fonction que précédemment, tout en présentant une mise en place simplifiée et une visualisation des résultats améliorée, afin de permettre à des utilisateurs possédant peu de connaissances en informatique de l'utiliser.
+La fonctionnalité du pipeline reste inchangée : il effectuera une cartographie automatisée des mutations, mais il sera désormais accompagné d'une nouvelle interface graphique plus intuitive. \\
+De plus, l'installation des dépendances devra être facilitée grâce à l'implémentation d'une plateforme de type Docker.\\
+Enfin, des conditions et des vérifications d'existence de fichiers seront ajoutées au script afin de rendre l'exécution du pipeline plus robuste.
 
 \subsubsection{Fonctionnalité du code}
 
-Les fonctionnalités que doit remplir le code permettant la rédaction du fichier d'entrée du pipeline:
+Le code apportera les fonctionnalités suivantes :
 
 \begin{itemize}
-\item remplir les champs du fichier source (configuration du pipeline) :
+\item Résolution des problèmes de dépendances logicielles grâce à l'implémentation d'une plateforme de type Docker
+\item Remplissage des champs du fichier de configuration du pipeline via une interface graphique :
 \begin{itemize}
 \item Génome de référence
 \item Fastq en pairend 
-\item Liste d'allèles connus entre l'individu sauvage et l’individu pas encore muté. Pour pouvoir les supprimer lors de l'appel de variant entre l'organisme sauvage et l'organisme muté. 
-\item Données d'information sur les reads (comme la technique de séquençage utilisée ex: Illumina, le SNP utilisé pour repérer la région mutée...)
-\item Le nom de sortie du dossier et de l’extension ajoutée au fichier.
+\item Liste d'allèles connus entre l'individu sauvage et l’individu qui sera étudié, avant mutation (pour pouvoir les supprimer lors de l'appel de variant entre l'organisme sauvage et l'organisme muté.)
+\item Données d'information sur les reads (comme la technique de séquençage utilisée, le SNP utilisé pour repérer la région mutée...)
+\item Le nom du dossier de sortie et de l’extension ajoutée au fichier.
 \end{itemize}
-\item Dans un second temps, on pourra prévoir un remplissage de certains champs automatiquement via des pipelines développés par le maître d'ouvrage. Comme la génération de la liste des variant entre l'organisme sauvage et l'organisme pas encore muté.
-\end{itemize}
-
-Les fonctionnalités que doit remplir le code permettant la sortie des résultats: 
-
-\begin{itemize}
+\item Remplissage automatique de certains champs via des pipelines développés par le maître d'ouvrage (comme la génération de la liste des variant entre l'organisme sauvage et l'organisme étudié avant mutation)
 \item Visualisation claire des données et des graphiques d’intérêt.
-\item Un fichier de sortie exportable comme une page html, pour facilité le partage de ces résultats. 
+\item Un fichier de sortie exportable (probablement sous le format d'une page html), pour faciliter le partage de ces résultats. 
 \end{itemize}
+
+%Les fonctionnalités que doit remplir le code permettant la sortie des résultats: 
+
+%\begin{itemize}
+%\item Visualisation claire des données et des graphiques d’intérêt.
+%\item Un fichier de sortie exportable comme une page html, pour facilité le partage de ces résultats. 
+%\end{itemize}
 
 \subsection{Besoins non fonctionnels}
 
-L'interface développée est réalisée sous le système d'exploitation Linux, il comprendra des parties en Shell, en Python et on utilisera également \textit{pyQt}, une librairie graphique python.
+L'interface développée sera réalisée sous Linux, il comprendra des parties en Shell, en Python et nous utiliserons également \textit{pyQt}, une librairie graphique python.
 
 \section{Contraintes}
 \subsection{Délais}
 
-Le projet s'organise sur une période de 4 semaines. Il débutera le lundi 5 février et prendra fin le vendredi 2 mars. Le projet pourra être continué durant une période de cours allant du 5 au 29 mars.
+Le projet s'organise sur une période de 4 semaines. Il débutera le lundi 5 février et prendra fin le vendredi 2 mars. Le projet pourra être poursuivi durant la période de cours allant du 5 au 29 mars.
 
-Un cahier des charges définitif devra être présenté le lundi 12 février.
+Un cahier des charges définitif sera délivré le lundi 12 février.
 
-Le délivrable final devra être rendu le 29 mars 2018.
+Le délivrable final sera rendu le 29 mars.
 
 \subsection{Autres contraintes}
 \section{Déroulement du projet}
@@ -188,12 +190,9 @@ Le délivrable final devra être rendu le 29 mars 2018.
 
 \subsection{Plan d'assurance qualité}
 
-Le contrôle qualité de l'interface développée consistera en une bonne exécution, simple et sans erreurs. Le logiciel sera testé par des membres de différentes équipes :
-
-\begin{itemize}
-\item Validation par Dr Besnard
-\item Utilisation du logiciel par des utilisateurs non initiés en informatique
-\end{itemize}
+Afin de nous assurer de la pertinence et de la bonne qualité du programme développé, nous ferons en sorte d'obtenir un logiciel utilisable au plus tôt. Puis, en tenant compte des retours du maître d'ouvrage, de rajouter et d'optimiser les différentes fonctionnalités recherchées.\\
+Le programme final devra être simple d'utilisation, robuste et devra informer l'utilisateur en cas d'erreurs.\\
+Enfin, celui-ci sera testé à la fois par le maître d'ouvrage (Dr Fabrice Besnard) et par des utilisateurs non-initiés en informatique.
 
 \subsection{Responsabilités}
 \subsubsection{Maîtrise d'ouvrage}
