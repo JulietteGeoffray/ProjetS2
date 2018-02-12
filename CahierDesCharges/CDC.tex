@@ -64,7 +64,8 @@ Toutefois, c'est une analyse bio-informatique qui requiert de nombreuses étapes
 
 \subsection{Objectifs}
 
-L'objectif général de ce projet est de rendre *Andalusian Mapping* plus accessible à la communauté scientifique, notamment pour les biologistes non-informaticiens, à la fois au niveau de la mise en place des outils du pipeline que de l'affichage des résultats.  
+L'objectif général de ce projet est de rendre \textit{Andalusian\_Mapping} plus accessible à la communauté scientifique, notamment pour les biologistes non-informaticiens, à la fois au niveau de la mise en place des outils du pipeline que de l'affichage des résultats.
+
 Pour ce faire, plusieurs pistes peuvent se révéler intéressantes : 
 
 \begin{itemize}
@@ -78,13 +79,13 @@ Pour ce faire, plusieurs pistes peuvent se révéler intéressantes :
 
 Récemment, Cloudmap, un pipeline automatique de mapping-by-sequencing et d'identification de mutants a été développé et intégré à Galaxy, qui est une interface utilisateur simple et intuitive.
 Cependant, ce pipeline ne permet pas à ce jour de travailler avec des génomes de référence \textit{exotiques}, étant donné que seuls les gènomes modèles comme \textit{Caenorhabditis elegans} ou \textit{Arabidopsis thaliana} sont disponibles sur Galaxy.
-\textit{Andalusian Mapping} a donc été développé dans le but de fournir un outil similaire afin de travailler avec des organismes non-modèles.
+\textit{Andalusian Mapping} a donc été développé dans le but de fournir un outil similaire afin de travailler avec une gamme plus vaste d'organisme.
 
 \textit{Andalusian Mapping} est un pipeline permettant d'effectuer une cartographie par séquençage afin d'identifier les régions les plus susceptibles d'être responsables d'une mutation.
 Ce pipeline est un script bash permettant l'utilisation en une seule étape de plusieurs outils bioinformatiques. \\
+Il tourne sous environnement Linux et Mac. La mise en place de différents logiciels est cependant fastidieuse et nécessaire au fonctionnement de ce pipeline.
 
-L'objectif de ce pipeline est de rendre suffisament simple l'utilisation de ces outils afin d'être accessible à la communauté scientifique sans nécessité d'un background informatique. Il tourne sous environnement Linux et Mac.
-Une mise en place de ces logiciels est cependant nécessaire :
+Logiciels requis :
 
 \begin{itemize}
 \item bwa version 0.7.5a-r405 ou supérieur
@@ -95,12 +96,27 @@ Une mise en place de ces logiciels est cependant nécessaire :
 \item snpEff Version 4.1g ou supérieur
 \end{itemize}
 
+
+L'utilisation de ce pipeline se base sur un fichier de configuration à remplir préalablement contenant les chemins vers les exécutables des logiciels utilisés, les fichiers \textit{fastq}, le génome de référence, une liste de variants prédéfinie ainsi qu'un répertoire dans lequel seront envoyés les résultats intermédiaires et finaux.\\
+
 Description du pipeline dans son ensemble :
-
-Ce pipeline prend en entré un fichier de configuration qui permet entre autre de renseigner les liens avec les logiciels utilisé, les fichier \textit{fastq}, le génome de référence et une liste de variant prédéfinie, qui sont les fichier de départ de l'analyse et le nom du dossier ou serons ajouter tout les fichiers créer par le pipeline. 
-
 \begin{enumerate}
-\item La première étape consiste à aligné les reads contre un génome de référence et a trier le fichier de sortie (.bam) pour les besoins d'un logiciel intervenant plus tard (picard). 
+
+\item Mapping et sorting des lectures contre le gènome de référence avec BWA
+\item Ajout des informations de groupe de lectures
+\item Merge des duplicats de lecture détectés
+\item Indexation du fichier BAM
+\item Génération de statistiques d'alignement (fréquence, couverture)
+\item Réalignement des lectures en prenant en compte les informations récoltées jusqu'ici
+\item Base Quality Score Recalibration avec génération de graphique et de statistique de qualité
+\item Variant Calling
+\item Réalisation de la cartographie des mutations à l'aide des SNP connus pour chaque scaffold
+\item Détection des meilleurs locus candidats grâce aux annotations.
+\item Génération des graphiques à l'aide d'un script R et d'un fichier contenant les locus les plus probables d'être responsables de la mutation
+\end{enumerate}
+
+
+\item La première étape consiste à aligner les reads contre un génome de référence et à trier le fichier de sortie (.bam) pour les besoins d'un logiciel intervenant plus tard (PICARD). 
 \item Ensuite on ajoute des informations de groupes aux reads.
 \item L'étape suivante consiste au merge des séquence et la suppression des reads dupliqué. 
 \item On indexe le fichier bam pour les besoins d'un logiciel intervenant plus tard (picard). 
@@ -119,7 +135,7 @@ Ce pipeline prend en entré un fichier de configuration qui permet entre autre d
 
 Afin de répondre à la problématique, une interface graphique sera développée. Elle devra permettre la rédaction du formulaire en entrée de pipeline, son exécution et enfin, la visualisation des résultats de sorties.
 
-Le logiciel devra être facile d'utilisation et informatif.
+Le logiciel devra être simple d'utilisation et les résultats facilement interprétables.
 
 \section{Expression des besoins}
 \subsection{Besoins fonctionnels}
@@ -128,7 +144,7 @@ Le logiciel devra être facile d'utilisation et informatif.
 
 \subsubsection{Fonctionnalité du logiciel}
 
-Le logiciel devra être facile et rapide à installer par un utilisateur même sans beaucoup de connaissance informatique. 
+Le logiciel devra remplir la même fonction que précédemment, tout en présentant une mise en place simplifiée et une visualisation des résultats améliorée, afin de permettre à des utilisateurs possédant peu de connaissances en informatique de l'utiliser.
 
 \subsubsection{Fonctionnalité du code}
 
@@ -139,9 +155,9 @@ Les fonctionnalités que doit remplir le code permettant la rédaction du fichie
 \begin{itemize}
 \item Génome de référence
 \item Fastq en pairend 
-\item Liste d'allèle connu entre l'individu sauvage et l’individu pas encore muté. Pour pouvoir les supprimer lors de l'appel de variant entre l'organisme sauvage et l'organisme muté. 
-\item Données d'information sur les read (comme la technique de séquençage utilisé ex: Illumina, le SNP utilisé pour repérer la région muté...)
-\item Le nom de sortie du dossier et de l’extension ajouter au fichier.
+\item Liste d'allèles connus entre l'individu sauvage et l’individu pas encore muté. Pour pouvoir les supprimer lors de l'appel de variant entre l'organisme sauvage et l'organisme muté. 
+\item Données d'information sur les reads (comme la technique de séquençage utilisée ex: Illumina, le SNP utilisé pour repérer la région mutée...)
+\item Le nom de sortie du dossier et de l’extension ajoutée au fichier.
 \end{itemize}
 \item Dans un second temps, on pourra prévoir un remplissage de certains champs automatiquement via des pipelines développés par le maître d'ouvrage. Comme la génération de la liste des variant entre l'organisme sauvage et l'organisme pas encore muté.
 \end{itemize}
@@ -170,7 +186,7 @@ Le délivrable final devra être rendu le 29 mars 2018.
 \section{Déroulement du projet}
 \subsection{Planification}
 
-\includegraphics[scale=0.6]{gantt.png}
+\includegraphics[scale=0.6]{gantt5.png}
 
 \subsection{Plan d'assurance qualité}
 

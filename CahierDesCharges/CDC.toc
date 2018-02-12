@@ -5,6 +5,8 @@
 \contentsline {subsection}{\numberline {1.4}Crit\IeC {\`e}res d'acceptabilit\IeC {\'e} du produit}{4}{subsection.1.4}
 \contentsline {section}{\numberline {2}Expression des besoins}{5}{section.2}
 \contentsline {subsection}{\numberline {2.1}Besoins fonctionnels}{5}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}Fonctionnalit\IeC {\'e} du logiciel}{6}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}Fonctionnalit\IeC {\'e} du code}{6}{subsubsection.2.1.2}
 \contentsline {subsection}{\numberline {2.2}Besoins non fonctionnels}{6}{subsection.2.2}
 \contentsline {section}{\numberline {3}Contraintes}{6}{section.3}
 \contentsline {subsection}{\numberline {3.1}D\IeC {\'e}lais}{6}{subsection.3.1}
