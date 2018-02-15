@@ -1,17 +1,11 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'main.ui'
-#
-# Created by: PyQt5 UI code generator 5.10
-#
-# WARNING! All changes made in this file will be lost!
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(657, 409)
+        MainWindow.resize(800, 450)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -71,6 +65,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout.addWidget(self.scrollArea, 0, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
+
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 657, 25))
         self.menubar.setObjectName("menubar")
@@ -91,10 +86,434 @@ class Ui_MainWindow(object):
         #Ajout d'un bouton :
         #btn2 = QtWidgets.QPushButton("bouton :)", self.scrollArea)
         #self.scrollArea.setWidget(btn2)
-        #print(self.scrollArea.widget())
+        #nbr = self.scrollArea.widget()
+
+        self.scrollArea.hide()
+
+        self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 377, 342))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.gridLayout.addWidget(self.scrollArea, 0, 1, 1, 1)
+        MainWindow.setCentralWidget(self.centralwidget)
+
+        btn2 = QtWidgets.QPushButton("bouton :)", self.scrollArea)
+        self.scrollArea.setWidget(btn2)
+
+    def buttonClicked_newAnalyse_etape3(self):
+        print("etape 3 formulaire")
+
+        self.scrollArea.hide()
+
+        self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 377, 342))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.gridLayout.addWidget(self.scrollArea, 0, 1, 1, 1)
+        MainWindow.setCentralWidget(self.centralwidget)
+
+        self.gridLayout_3 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
+        self.gridLayout_3.setObjectName("gridLayout_3")
+
+        self.label_etape3 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_etape3.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.label_etape3.setObjectName("label_etape3")
+
+        self.gridLayout_3.addWidget(self.label_etape3, 0, 0, 1, 1)
+
+        self.label_titre3 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_titre3.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.label_titre3.setObjectName("label_titre3")
+
+        self.gridLayout_3.addWidget(self.label_titre3, 1, 0, 1, 1)
+
+        self.label_indique3 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_indique3.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.label_indique3.setObjectName("label_indique3")
+
+        self.gridLayout_3.addWidget(self.label_indique3, 2, 0, 1, 1)
+
+        self.horizontalLayout_17 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_17.setObjectName("horizontalLayout_17")
+
+        self.label_dbsnp = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_dbsnp.setObjectName("label_dbsnp")
+
+        self.horizontalLayout_17.addWidget(self.label_dbsnp)
+
+        self.lineEdit_dbsnp = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.lineEdit_dbsnp.setObjectName("lineEdit_dbsnp")
+
+        self.horizontalLayout_17.addWidget(self.lineEdit_dbsnp)
+
+        self.toolButton_11 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.toolButton_11.setObjectName("toolButton_11")
+
+        self.horizontalLayout_17.addWidget(self.toolButton_11)
+
+        self.gridLayout_3.addLayout(self.horizontalLayout_17, 3, 0, 1, 1)
+
+        self.horizontalLayout_18 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_18.setObjectName("horizontalLayout_18")
+
+        self.label_listScaff = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_listScaff.setObjectName("label_listScaff")
+
+        self.horizontalLayout_18.addWidget(self.label_listScaff)
+
+        self.lineEdit_listScaff = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.lineEdit_listScaff.setObjectName("lineEdit_listScaff")
+
+        self.horizontalLayout_18.addWidget(self.lineEdit_listScaff)
+
+        self.toolButton_12 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.toolButton_12.setObjectName("toolButton_12")
+
+        self.horizontalLayout_18.addWidget(self.toolButton_12)
+
+        self.gridLayout_3.addLayout(self.horizontalLayout_18, 4, 0, 1, 1)
+
+        self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
+
+        self.label_InvarScaf = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_InvarScaf.setObjectName("label_InvarScaf")
+
+        self.horizontalLayout_11.addWidget(self.label_InvarScaf)
+
+        self.lineEdit_InvarScaf = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.lineEdit_InvarScaf.setObjectName("lineEdit_InvarScaf")
+
+        self.horizontalLayout_11.addWidget(self.lineEdit_InvarScaf)
+
+        self.toolButton_7 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.toolButton_7.setObjectName("toolButton_7")
+
+        self.horizontalLayout_11.addWidget(self.toolButton_7)
+
+        self.gridLayout_3.addLayout(self.horizontalLayout_11, 5, 0, 1, 1)
+
+        self.horizontalLayout_13 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_13.setObjectName("horizontalLayout_13")
+
+        self.label_17 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_17.setObjectName("label_17")
+
+        self.horizontalLayout_13.addWidget(self.label_17)
+
+        self.label_warnScaf = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_warnScaf.setObjectName("label_warnScaf")
+
+        self.horizontalLayout_13.addWidget(self.label_warnScaf)
+
+        self.lineEdit_warnScaf = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.lineEdit_warnScaf.setObjectName("lineEdit_warnScaf")
+
+        self.horizontalLayout_13.addWidget(self.lineEdit_warnScaf)
+
+        self.toolButton_9 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.toolButton_9.setObjectName("toolButton_9")
+
+        self.horizontalLayout_13.addWidget(self.toolButton_9)
+
+        self.gridLayout_3.addLayout(self.horizontalLayout_13, 6, 0, 1, 1)
+
+        self.horizontalLayout_12 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_12.setObjectName("horizontalLayout_12")
+
+        self.label_Contvcf = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_Contvcf.setObjectName("label_Contvcf")
+
+        self.horizontalLayout_12.addWidget(self.label_Contvcf)
+
+        self.lineEdit_Contvcf = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.lineEdit_Contvcf.setObjectName("lineEdit_Contvcf")
+
+        self.horizontalLayout_12.addWidget(self.lineEdit_Contvcf)
+
+        self.toolButton_8 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.toolButton_8.setObjectName("toolButton_8")
+
+        self.horizontalLayout_12.addWidget(self.toolButton_8)
+
+        self.gridLayout_3.addLayout(self.horizontalLayout_12, 7, 0, 1, 1)
+
+        self.horizontalLayout_14 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_14.setObjectName("horizontalLayout_14")
+
+        self.label_Mappvcf = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_Mappvcf.setObjectName("label_Mappvcf")
+
+        self.horizontalLayout_14.addWidget(self.label_Mappvcf)
+
+        self.lineEdit_Mappvcf = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.lineEdit_Mappvcf.setObjectName("lineEdit_Mappvcf")
+
+        self.horizontalLayout_14.addWidget(self.lineEdit_Mappvcf)
+
+        self.toolButton_10 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.toolButton_10.setObjectName("toolButton_10")
+
+        self.horizontalLayout_14.addWidget(self.toolButton_10)
+
+        self.gridLayout_3.addLayout(self.horizontalLayout_14, 8, 0, 1, 1)
+
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+
+        self.label_backStrainId = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_backStrainId.setObjectName("label_backStrainId")
+
+        self.horizontalLayout_10.addWidget(self.label_backStrainId)
+
+        self.lineEdit_backStrainId = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.lineEdit_backStrainId.setObjectName("lineEdit_backStrainId")
+
+        self.horizontalLayout_10.addWidget(self.lineEdit_backStrainId)
+
+        self.gridLayout_3.addLayout(self.horizontalLayout_10, 9, 0, 1, 1)
+
+        self.horizontalLayout_16 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_16.setObjectName("horizontalLayout_16")
+
+        self.label_20 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_20.setObjectName("label_20")
+
+        self.horizontalLayout_16.addWidget(self.label_20)
+
+        self.label_mappStrainId = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_mappStrainId.setObjectName("label_mappStrainId")
+
+        self.horizontalLayout_16.addWidget(self.label_mappStrainId)
+
+        self.lineEdit_mappStrainId = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.lineEdit_mappStrainId.setObjectName("lineEdit_mappStrainId")
+
+        self.horizontalLayout_16.addWidget(self.lineEdit_mappStrainId)
+
+        self.gridLayout_3.addLayout(self.horizontalLayout_16, 10, 0, 1, 1)
+
+        self.horizontalLayout_15 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_15.setObjectName("horizontalLayout_15")
+
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+
+        self.horizontalLayout_15.addItem(spacerItem)
+
+        self.pushButton_runAnalysis = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+        self.pushButton_runAnalysis.setMinimumSize(QtCore.QSize(116, 0))
+        self.pushButton_runAnalysis.setMaximumSize(QtCore.QSize(50, 30))
+        self.pushButton_runAnalysis.setSizeIncrement(QtCore.QSize(1, 1))
+
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(170, 255, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(242, 241, 240))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(242, 241, 240))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
+
+        self.pushButton_runAnalysis.setPalette(palette)
+        self.pushButton_runAnalysis.setObjectName("pushButton_runAnalysis")
+
+        self.horizontalLayout_15.addWidget(self.pushButton_runAnalysis)
+
+        self.gridLayout_3.addLayout(self.horizontalLayout_15, 11, 0, 1, 1)
+        
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.gridLayout.addWidget(self.scrollArea, 0, 2, 1, 1)
+        MainWindow.setCentralWidget(self.centralwidget)
+
+    def buttonClicked_newAnalyse_etape2(self):
+        print("etape 2 formulaire")
+        self.scrollArea.hide()
+
+        self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 377, 342))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.gridLayout.addWidget(self.scrollArea, 0, 1, 1, 1)
+        MainWindow.setCentralWidget(self.centralwidget)
+
+        self.gridLayout_5 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
+        self.gridLayout_5.setObjectName("gridLayout_5")
+
+        self.gridLayout_4 = QtWidgets.QGridLayout()
+        self.gridLayout_4.setObjectName("gridLayout_4")
+
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_4.addItem(spacerItem, 0, 0, 1, 1)
+
+        self.pushButton_next2 = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+        self.pushButton_next2.setObjectName("pushButton_next2")
+        self.pushButton_next2.setText("Next")
+        self.pushButton_next2.clicked.connect(self.buttonClicked_newAnalyse_etape3)
+
+        self.gridLayout_4.addWidget(self.pushButton_next2, 0, 1, 1, 1)
+        self.gridLayout_5.addLayout(self.gridLayout_4, 4, 0, 1, 2)
+
+        self.label_Indiq2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_Indiq2.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.label_Indiq2.setObjectName("label_Indiq2")
+        self.label_Indiq2.setText("<html><head/><body><p align=\"justify\"><span style=\" font-size:10pt; font-style:italic;\">Les noms des fichiers seront construis ainsi : {FlowCellID}-{sampleID}_Lane </span></p></body></html>")
+
+        self.gridLayout_5.addWidget(self.label_Indiq2, 2, 0, 1, 2)
+
+        self.gridLayout_3 = QtWidgets.QGridLayout()
+        self.gridLayout_3.setObjectName("gridLayout_3")
+
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+
+        self.label_sample = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_sample.setObjectName("label_sample")
+        self.label_sample.setText("Sample :         ")
+
+        self.horizontalLayout_2.addWidget(self.label_sample)
+
+        self.lineEdit_sample = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.lineEdit_sample.setObjectName("lineEdit_sample")
+        self.lineEdit_sample.setText("e.g. mf76")
+
+        self.horizontalLayout_2.addWidget(self.lineEdit_sample)
+
+        self.gridLayout_3.addLayout(self.horizontalLayout_2, 1, 0, 1, 1)
+
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+
+        self.label_library = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_library.setObjectName("label_library")
+        self.label_library.setText("Library :          ")
+
+        self.horizontalLayout.addWidget(self.label_library)
+
+        self.lineEdit_library = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.lineEdit_library.setObjectName("lineEdit_library")
+        self.lineEdit_library.setText("e.g. mf76_LB1")
+
+        self.horizontalLayout.addWidget(self.lineEdit_library)
+
+        self.gridLayout_3.addLayout(self.horizontalLayout, 2, 0, 1, 1)
+
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+
+        self.label_8 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_8.setObjectName("label_8")
+        self.label_8.setText("?")
+        self.label_8.setToolTip("<html><head/><body><p>Choose \'Flow Cell ID\'_\'sample\'</p></body></html>")
+
+        self.horizontalLayout_5.addWidget(self.label_8)
+
+        self.label_rgid = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_rgid.setObjectName("label_rgid")
+        self.label_rgid.setText("RGID :         ")
+
+        self.horizontalLayout_5.addWidget(self.label_rgid)
+
+        self.lineEdit_rgid = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.lineEdit_rgid.setObjectName("lineEdit_rgid")
+
+        self.horizontalLayout_5.addWidget(self.lineEdit_rgid)
+
+        self.gridLayout_3.addLayout(self.horizontalLayout_5, 3, 0, 1, 1)
+
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+
+        self.label_9 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_9.setObjectName("label_9")
+        self.label_9.setText("?")
+        self.label_9.setToolTip("<html><head/><body><p>Choose \'Flow Cell ID\'_\'Lane\'_\'sample\'</p></body></html>")
+
+
+        self.horizontalLayout_4.addWidget(self.label_9)
+
+        self.label_rgpu = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_rgpu.setObjectName("label_rgpu")
+        self.label_rgpu.setText("RGPU :        ")
+
+        self.horizontalLayout_4.addWidget(self.label_rgpu)
+
+        self.lineEdit_rgpu = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.lineEdit_rgpu.setObjectName("lineEdit_rgpu")
+
+        self.horizontalLayout_4.addWidget(self.lineEdit_rgpu)
+
+        self.gridLayout_3.addLayout(self.horizontalLayout_4, 4, 0, 1, 1)
+
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+
+        self.label_plateforme = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_plateforme.setObjectName("label_plateforme")
+        self.label_plateforme.setText("Plateforme : ")
+
+        self.horizontalLayout_3.addWidget(self.label_plateforme)
+
+        self.lineEdit_plateforme = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.lineEdit_plateforme.setObjectName("lineEdit_plateforme")
+        self.lineEdit_plateforme.setText("e.g. ILLUMINA")
+
+        self.horizontalLayout_3.addWidget(self.lineEdit_plateforme)
+
+        self.gridLayout_3.addLayout(self.horizontalLayout_3, 0, 0, 1, 1)
+
+        self.gridLayout_5.addLayout(self.gridLayout_3, 3, 0, 1, 2)
+
+        self.label_BGI = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_BGI.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.label_BGI.setMidLineWidth(0)
+        self.label_BGI.setIndent(1)
+        self.label_BGI.setOpenExternalLinks(False)
+        self.label_BGI.setObjectName("label_BGI")
+        self.label_BGI.setText("<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\"># BGI </span></p></body></html>")
+
+        self.gridLayout_5.addWidget(self.label_BGI, 1, 0, 1, 1)
+
+        self.label_etape2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_etape2.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.label_etape2.setObjectName("label_etape2")
+        self.label_etape2.setText("<html><head/><body><p align=\"center\"><span style=\" font-weight:600; font-style:italic;\">Formulaire : étape 2 sur 3</span></p></body></html>")
+
+        self.gridLayout_5.addWidget(self.label_etape2, 0, 0, 1, 2)
+
+        self.label_BGI.raise_()
+        self.label_Indiq2.raise_()
+        self.label_etape2.raise_()
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.gridLayout.addWidget(self.scrollArea, 0, 2, 1, 1)
+        MainWindow.setCentralWidget(self.centralwidget)
+
 
     def buttonClicked_newAnalyse(self):
         print("nouvelle annalyse")
+
+        self.scrollArea.hide()
+
+        self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 377, 342))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.gridLayout.addWidget(self.scrollArea, 0, 1, 1, 1)
+        MainWindow.setCentralWidget(self.centralwidget)
 
         self.gridLayout_3 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_3.setObjectName("gridLayout_3")
@@ -187,11 +606,13 @@ class Ui_MainWindow(object):
         self.label_etape1 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label_etape1.setMaximumSize(QtCore.QSize(16777215, 30))
         self.pushButton_next1.setText("Next")
+        self.pushButton_next1.clicked.connect(self.buttonClicked_newAnalyse_etape2)
 
         self.label_etape1.setObjectName("label_etape1")
         self.gridLayout_3.addWidget(self.label_etape1, 0, 0, 1, 3)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.label_etape1.setText("<html><head/><body><p align=\"center\"><span style=\" font-weight:600; font-style:italic;\">Formulaire : étape 1 sur 3</span></p></body></html>")
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
