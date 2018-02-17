@@ -113,12 +113,12 @@ class Ui_MainWindow(object):
         ######################################################################
         #                                                                    #
         #                          FORMULAIRE                                #
-        #                                                                    #
+        #                4 étapes + étape lance l'analyse                    #
         ######################################################################
 
-    def defVariable(self):
-        #Gestion du formulaire avec la class Formulaire
-        new=ClassFormulaire.Formulaire()
+        ######################################################################
+        #               formualire end -> lance l'analyse                    #
+        ######################################################################
 
     def RunAnalysis(self):
         print("Run Analysis")
@@ -130,6 +130,8 @@ class Ui_MainWindow(object):
         # On les sauvegarde dans le dictionnaire qui gènre les champs
         new.etape4(listScaff, InvarScaf, warnScaf)
         print(new.dico)
+
+        
 
         self.scrollArea.hide()
         self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
@@ -202,6 +204,10 @@ class Ui_MainWindow(object):
         self.lineEdit_listScaff.setText("")
         self.lineEdit_listScaff.setObjectName("lineEdit_listScaff")
 
+        if "listScaff" in new.dico.keys():
+            if new.dico["listScaff"] != "":
+                self.lineEdit_listScaff.setText(new.dico["listScaff"])
+
         self.horizontalLayout_18.addWidget(self.lineEdit_listScaff)
 
         self.toolButton_listScaff = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
@@ -224,6 +230,10 @@ class Ui_MainWindow(object):
         self.lineEdit_InvarScaf = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_InvarScaf.setText("")
         self.lineEdit_InvarScaf.setObjectName("lineEdit_InvarScaf")
+
+        if "InvarScaf" in new.dico.keys():
+            if new.dico["InvarScaf"] != "":
+                self.lineEdit_InvarScaf.setText(new.dico["InvarScaf"])
 
         self.horizontalLayout_11.addWidget(self.lineEdit_InvarScaf)
 
@@ -253,6 +263,11 @@ class Ui_MainWindow(object):
         self.lineEdit_warnScaf = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_warnScaf.setText("")
         self.lineEdit_warnScaf.setObjectName("lineEdit_warnScaf")
+
+        if "warnScaf" in new.dico.keys():
+            if new.dico["warnScaf"] != "":
+                self.lineEdit_warnScaf.setText(new.dico["warnScaf"])
+
         self.label_warnScaf.setToolTip("<html><head/><body><p><br/></p></body></html>")
         self.label_warnScaf.setText("Warning Scaffolds :                       ")
 
@@ -299,7 +314,6 @@ class Ui_MainWindow(object):
         self.pushButton_runAnalysis.setObjectName("pushButton_runAnalysis")
         self.pushButton_runAnalysis.setText("Run Analysis")
         self.pushButton_runAnalysis.clicked.connect(self.RunAnalysis)
-
 
         # run analis : création du fichier config avec class formulaire
         # si la création du fichier renvoie ok on lance l'analyse
@@ -373,6 +387,10 @@ class Ui_MainWindow(object):
         self.lineEdit_backStrainId.setText("")
         self.lineEdit_backStrainId.setObjectName("lineEdit_backStrainId")
 
+        if "backStrainId" in new.dico.keys():
+            if new.dico["backStrainId"] != "":
+                self.lineEdit_backStrainId.setText(new.dico["backStrainId"])
+
         self.horizontalLayout_10.addWidget(self.lineEdit_backStrainId)
 
         self.gridLayout_3.addLayout(self.horizontalLayout_10, 2, 0, 1, 1)
@@ -390,11 +408,19 @@ class Ui_MainWindow(object):
         self.radioButton_yesRef.setObjectName("radioButton_yesRef")
         self.radioButton_yesRef.setText("yes")
 
+        if "referenced" in new.dico.keys():
+            if new.dico["referenced"] == 0:
+                self.radioButton_yesRef.setChecked(True)
+
         self.horizontalLayout.addWidget(self.radioButton_yesRef)
 
         self.radioButton_noRef = QtWidgets.QRadioButton(self.scrollAreaWidgetContents)
         self.radioButton_noRef.setObjectName("radioButton_noRef")
         self.radioButton_noRef.setText("no")
+
+        if "referenced" in new.dico.keys():
+            if new.dico["referenced"] == 1:
+                self.radioButton_noRef.setChecked(True)
 
         self.horizontalLayout.addWidget(self.radioButton_noRef)
 
@@ -420,6 +446,10 @@ class Ui_MainWindow(object):
         self.lineEdit_mappStrainId.setText("")
         self.lineEdit_mappStrainId.setObjectName("lineEdit_mappStrainId")
 
+        if "mappStrainId" in new.dico.keys():
+            if new.dico["mappStrainId"] != "":
+                self.lineEdit_mappStrainId.setText(new.dico["mappStrainId"])
+
         self.horizontalLayout_16.addWidget(self.lineEdit_mappStrainId)
 
         self.gridLayout_3.addLayout(self.horizontalLayout_16, 4, 0, 1, 1)
@@ -436,6 +466,10 @@ class Ui_MainWindow(object):
         self.lineEdit_dbsnp = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_dbsnp.setText("")
         self.lineEdit_dbsnp.setObjectName("lineEdit_dbsnp")
+
+        if "dbSNP" in new.dico.keys():
+            if new.dico["dbSNP"] != "":
+                self.lineEdit_dbsnp.setText(new.dico["dbSNP"])
 
         self.horizontalLayout_17.addWidget(self.lineEdit_dbsnp)
 
@@ -555,6 +589,10 @@ class Ui_MainWindow(object):
         self.lineEdit_sample.setObjectName("lineEdit_sample")
         self.lineEdit_sample.setText("")
 
+        if "sample" in new.dico.keys():
+            if new.dico["sample"] != "":
+                self.lineEdit_sample.setText(new.dico["sample"])
+
         self.horizontalLayout_2.addWidget(self.lineEdit_sample)
 
         self.gridLayout_3.addLayout(self.horizontalLayout_2, 1, 0, 1, 1)
@@ -571,6 +609,10 @@ class Ui_MainWindow(object):
         self.lineEdit_library = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_library.setObjectName("lineEdit_library")
         self.lineEdit_library.setText("")
+
+        if "library" in new.dico.keys():
+            if new.dico["library"] != "":
+                self.lineEdit_library.setText(new.dico["library"])
 
         self.horizontalLayout.addWidget(self.lineEdit_library)
 
@@ -594,6 +636,10 @@ class Ui_MainWindow(object):
 
         self.lineEdit_rgid = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_rgid.setObjectName("lineEdit_rgid")
+
+        if "rgid" in new.dico.keys():
+            if new.dico["rgid"] != "":
+                self.lineEdit_rgid.setText(new.dico["rgid"])
 
         self.horizontalLayout_5.addWidget(self.lineEdit_rgid)
 
@@ -619,6 +665,10 @@ class Ui_MainWindow(object):
         self.lineEdit_rgpu = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_rgpu.setObjectName("lineEdit_rgpu")
 
+        if "rgpu" in new.dico.keys():
+            if new.dico["rgpu"] != "":
+                self.lineEdit_rgpu.setText(new.dico["rgpu"])
+
         self.horizontalLayout_4.addWidget(self.lineEdit_rgpu)
 
         self.gridLayout_3.addLayout(self.horizontalLayout_4, 4, 0, 1, 1)
@@ -635,6 +685,10 @@ class Ui_MainWindow(object):
         self.lineEdit_plateforme = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_plateforme.setObjectName("lineEdit_plateforme")
         self.lineEdit_plateforme.setText("")
+
+        if "plateforme" in new.dico.keys():
+            if new.dico["plateforme"] != "":
+                self.lineEdit_plateforme.setText(new.dico["plateforme"])
 
         self.horizontalLayout_3.addWidget(self.lineEdit_plateforme)
 
@@ -670,6 +724,8 @@ class Ui_MainWindow(object):
         ######################################################################
         #                      Formulaire - Etape 1                          #
         ######################################################################
+
+        #if i in self.dico_indexer_read.keys():
 
     def buttonClicked_newAnalyse(self):
         print("nouvelle annalyse")
@@ -707,6 +763,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.addWidget(self.lineEdit_GenRef)
         self.toolButton_GenRef = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
 
+        if "genRef" in new.dico.keys():
+            if new.dico["genRef"] != "":
+                self.lineEdit_GenRef.setText(new.dico["genRef"])
+
         self.toolButton_GenRef.setObjectName("toolButton_GenRef")
         self.horizontalLayout_4.addWidget(self.toolButton_GenRef)
         self.gridLayout_3.addLayout(self.horizontalLayout_4, 2, 0, 1, 3)
@@ -723,9 +783,17 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.horizontalLayout.addLayout(self.horizontalLayout_5)
-        self.lineEdit_Read1 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
 
+        self.lineEdit_Read1 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_Read1.setObjectName("lineEdit_Read1")
+
+        # remplir le champs des read en fonction du nombre
+        # A voir plus tard, peut etre en même temps que la gestion
+        # d'ajout de 2 - 4 - 8... fichier de reads
+        #if "genRef" in new.dico.keys():
+        #    if new.dico["genRef"] != "":
+        #        self.lineEdit_GenRef.setText(new.dico["genRef"])
+
         self.horizontalLayout.addWidget(self.lineEdit_Read1)
         self.toolButton_Read1 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
 

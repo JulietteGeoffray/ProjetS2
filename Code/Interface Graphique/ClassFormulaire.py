@@ -24,7 +24,7 @@ class Formulaire():
         self.dico["rgpu"]=rgpu
 
     def etape3(self,backStrainID, Referenced, MappStrainId, dbsnp):
-        self.dico["backStrainID"]=backStrainID
+        self.dico["backStrainId"]=backStrainID
         self.dico["referenced"]=Referenced
         self.dico["mappStrainId"]=MappStrainId
         self.dico["dbSNP"]=dbsnp
@@ -33,6 +33,9 @@ class Formulaire():
         self.dico["listScaff"]=listScaff
         self.dico["InvarScaf"]=InvarScaf
         self.dico["warnScaf"]=warnScaf
+
+    def setFichier(self, fichier):
+        self.fichier=fichier
 
     def remplisConfig(self):
         pass
