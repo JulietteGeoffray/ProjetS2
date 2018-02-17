@@ -2,8 +2,17 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+import ClassFormulaire
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+
+        ######################################################################
+        #                                                                    #
+        #         Fenetre princiale (menu gauche + scroll bar area)          #
+        #                                                                    #
+        ######################################################################
+
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 450)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -33,12 +42,10 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addWidget(self.label_titre, 0, 0, 1, 1)
         self.pushButton_acceuil = QtWidgets.QPushButton(self.groupBox_2)
 
-
         self.pushButton_acceuil.setObjectName("pushButton_acceuil")
         self.gridLayout_2.addWidget(self.pushButton_acceuil, 1, 0, 1, 1)
         self.pushButton_newAnalyse = QtWidgets.QPushButton(self.groupBox_2)
         self.pushButton_newAnalyse.clicked.connect(self.buttonClicked_newAnalyse)
-
 
         self.pushButton_newAnalyse.setObjectName("pushButton_newAnalyse")
         self.gridLayout_2.addWidget(self.pushButton_newAnalyse, 2, 0, 1, 1)
@@ -103,8 +110,57 @@ class Ui_MainWindow(object):
         btn2 = QtWidgets.QPushButton("bouton :)", self.scrollArea)
         self.scrollArea.setWidget(btn2)
 
+        ######################################################################
+        #                                                                    #
+        #                          FORMULAIRE                                #
+        #                                                                    #
+        ######################################################################
+
+    def defVariable(self):
+        #Gestion du formulaire avec la class Formulaire
+        new=ClassFormulaire.Formulaire()
+
+    def RunAnalysis(self):
+        print("Run Analysis")
+
+        # Chope les textes des champs précédant
+        listScaff=self.lineEdit_listScaff.text()
+        InvarScaf=self.lineEdit_InvarScaf.text()
+        warnScaf=self.lineEdit_warnScaf.text()
+        # On les sauvegarde dans le dictionnaire qui gènre les champs
+        new.etape4(listScaff, InvarScaf, warnScaf)
+        print(new.dico)
+
+        self.scrollArea.hide()
+        self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 377, 342))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.gridLayout.addWidget(self.scrollArea, 0, 1, 1, 1)
+        MainWindow.setCentralWidget(self.centralwidget)
+
+        ######################################################################
+        #                      Formulaire - Etape 4                          #
+        ######################################################################
+
     def buttonClicked_newAnalyse_etape4(self):
         print("etape 4 formulaire")
+
+        # Chope les textes des champs précédant
+        backStrainID=self.lineEdit_backStrainId.text()
+        mappStrainId=self.lineEdit_mappStrainId.text()
+        dbSNP=self.lineEdit_dbsnp.text()
+
+        if self.radioButton_yesRef.isChecked():
+            referenced=0
+        else:
+            referenced=1
+        # On les sauvegarde dans le dictionnaire qui gènre les champs
+        new.etape3(backStrainID, referenced, mappStrainId, dbSNP)
+        print(new.dico)
 
         self.scrollArea.hide()
         self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
@@ -219,6 +275,7 @@ class Ui_MainWindow(object):
         self.pushButton_back4 = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         self.pushButton_back4.setObjectName("pushButton_back4")
         self.pushButton_back4.setText("Back")
+        self.pushButton_back4.clicked.connect(self.buttonClicked_newAnalyse_etape3)
 
         self.horizontalLayout.addWidget(self.pushButton_back4)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -241,6 +298,15 @@ class Ui_MainWindow(object):
         self.pushButton_runAnalysis.setPalette(palette)
         self.pushButton_runAnalysis.setObjectName("pushButton_runAnalysis")
         self.pushButton_runAnalysis.setText("Run Analysis")
+        self.pushButton_runAnalysis.clicked.connect(self.RunAnalysis)
+
+
+        # run analis : création du fichier config avec class formulaire
+        # si la création du fichier renvoie ok on lance l'analyse
+        # sinon on renseigne le champs qui pose probleme et on chance sa valeur
+        # nouvelle vérif apres erreur
+        # -> dans une fenetre popup
+        # Boucle do - jusqu'a ce que ce sois bon puis on lance l'analise
 
         self.horizontalLayout.addWidget(self.pushButton_runAnalysis)
         self.gridLayout_2.addLayout(self.horizontalLayout, 6, 0, 1, 1)
@@ -249,8 +315,22 @@ class Ui_MainWindow(object):
         #self.gridLayout_3.addWidget(self.scrollArea, 0, 1, 1, 1)
         #MainWindow.setCentralWidget(self.centralwidget)
 
+        ######################################################################
+        #                      Formulaire - Etape 3                          #
+        ######################################################################
+
     def buttonClicked_newAnalyse_etape3(self):
         print("etape 3 formulaire")
+
+        # Chope les textes des champs précédant
+        plateforme=self.lineEdit_plateforme.text()
+        sample=self.lineEdit_sample.text()
+        library=self.lineEdit_library.text()
+        rgid=self.lineEdit_rgid.text()
+        rgpu=self.lineEdit_rgpu.text()
+        # On les sauvegarde dans le dictionnaire qui gènre les champs
+        new.etape2(plateforme, sample, library, rgid, rgpu)
+        print(new.dico)
 
         self.scrollArea.hide()
         self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
@@ -377,6 +457,7 @@ class Ui_MainWindow(object):
         self.pushButton_back3 = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         self.pushButton_back3.setObjectName("pushButton_back3")
         self.pushButton_back3.setText("Back")
+        self.pushButton_back3.clicked.connect(self.buttonClicked_newAnalyse_etape2)
 
         self.horizontalLayout_2.addWidget(self.pushButton_back3)
 
@@ -396,10 +477,28 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.scrollArea, 0, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
+        ######################################################################
+        #                      Formulaire - Etape 2                          #
+        ######################################################################
+
     def buttonClicked_newAnalyse_etape2(self):
         print("etape 2 formulaire")
-        self.scrollArea.hide()
 
+        ## Avant de cacher les champs et de les "effacer" je recupere les valeurs des
+        ## champs pour remplir le fichier de config
+        # Chope les texte
+        GenRef=self.lineEdit_GenRef.text()
+        read=[]
+        read.append(self.lineEdit_Read1.text())
+        read.append(self.lineEdit_Read2.text())
+        # On les sauvegarde dans le dictionnaire qui gènre les champs
+        new.etape1(GenRef, 2, read)
+        print(new.dico)
+
+        ## Mise en place des champs de formulaire pour l'affichage de l'étape 2
+        # Cacher les ancien champs en cachant la scroll area
+        self.scrollArea.hide()
+        # Recréer l'esapce de scroll area vide
         self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
@@ -410,20 +509,28 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.scrollArea, 0, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
+        # Ajout de tout les champs dans la nouvelle scroll area de l'etape 2
+
         self.gridLayout_5 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_5.setObjectName("gridLayout_5")
 
         self.gridLayout_4 = QtWidgets.QGridLayout()
         self.gridLayout_4.setObjectName("gridLayout_4")
 
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_4.addItem(spacerItem, 0, 0, 1, 1)
         self.pushButton_next2 = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         self.pushButton_next2.setObjectName("pushButton_next2")
         self.pushButton_next2.setText("Next")
         self.pushButton_next2.clicked.connect(self.buttonClicked_newAnalyse_etape3)
 
-        self.gridLayout_4.addWidget(self.pushButton_next2, 0, 1, 1, 1)
+        self.gridLayout_4.addWidget(self.pushButton_next2, 0, 2, 1, 1)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_4.addItem(spacerItem, 0, 1, 1, 1)
+        self.pushButton_back2 = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+        self.pushButton_back2.setObjectName("pushButton_back2")
+        self.pushButton_back2.setText("Back")
+        self.pushButton_back2.clicked.connect(self.buttonClicked_newAnalyse)
+
+        self.gridLayout_4.addWidget(self.pushButton_back2, 0, 0, 1, 1)
         self.gridLayout_5.addLayout(self.gridLayout_4, 4, 0, 1, 2)
         self.label_Indiq2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label_Indiq2.setMaximumSize(QtCore.QSize(16777215, 30))
@@ -560,6 +667,9 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.scrollArea, 0, 2, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
+        ######################################################################
+        #                      Formulaire - Etape 1                          #
+        ######################################################################
 
     def buttonClicked_newAnalyse(self):
         print("nouvelle annalyse")
@@ -674,7 +784,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.label_etape1.setText("<html><head/><body><p align=\"center\"><span style=\" font-weight:600; font-style:italic;\">Formulaire : étape 1 sur 4</span></p></body></html>")
 
-
+    #Fonction qui ajoute le texte sur les éléments de la fenetre princiale (= menu a gauche)
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -685,9 +795,15 @@ class Ui_MainWindow(object):
         self.pushButton_resultat.setText(_translate("MainWindow", "Résultats"))
         self.pushButton_author.setText(_translate("MainWindow", "About - Author"))
 
+        ######################################################################
+        #                                                                    #
+        #                Boucle principale du programmme                     #
+        #                                                                    #
+        ######################################################################
 
 if __name__ == "__main__":
     import sys
+    new=ClassFormulaire.Formulaire()
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()

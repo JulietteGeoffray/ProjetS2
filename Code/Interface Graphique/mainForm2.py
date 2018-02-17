@@ -59,17 +59,21 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 530, 342))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
 
-
         self.gridLayout_5 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_5.setObjectName("gridLayout_5")
         self.gridLayout_4 = QtWidgets.QGridLayout()
         self.gridLayout_4.setObjectName("gridLayout_4")
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_4.addItem(spacerItem, 0, 0, 1, 1)
+
         self.pushButton_next2 = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         self.pushButton_next2.setObjectName("pushButton_next2")
-        self.gridLayout_4.addWidget(self.pushButton_next2, 0, 1, 1, 1)
+        self.gridLayout_4.addWidget(self.pushButton_next2, 0, 2, 1, 1)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_4.addItem(spacerItem, 0, 1, 1, 1)
+        self.pushButton_back2 = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+        self.pushButton_back2.setObjectName("pushButton_back2")
+        self.gridLayout_4.addWidget(self.pushButton_back2, 0, 0, 1, 1)
         self.gridLayout_5.addLayout(self.gridLayout_4, 4, 0, 1, 2)
+
         self.label_Indiq2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label_Indiq2.setMaximumSize(QtCore.QSize(16777215, 30))
         self.label_Indiq2.setObjectName("label_Indiq2")
@@ -145,6 +149,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout.addWidget(self.scrollArea, 0, 2, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
+
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 810, 25))
         self.menubar.setObjectName("menubar")
@@ -166,6 +171,7 @@ class Ui_MainWindow(object):
         self.pushButton_3.setText(_translate("MainWindow", "Résultats"))
         self.pushButton_5.setText(_translate("MainWindow", "About - Author"))
         self.pushButton_next2.setText(_translate("MainWindow", "Next"))
+        self.pushButton_back2.setText(_translate("MainWindow", "Back"))
         self.label_Indiq2.setText(_translate("MainWindow", "<html><head/><body><p align=\"justify\"><span style=\" font-size:10pt; font-style:italic;\">Les noms des fichiers serons construit comme suis : {FlowCellID}-{sampleID}_Lane </span></p></body></html>"))
         self.label_sample.setText(_translate("MainWindow", "Sample :         "))
         self.lineEdit_sample.setText(_translate("MainWindow", "e.g. mf76"))
