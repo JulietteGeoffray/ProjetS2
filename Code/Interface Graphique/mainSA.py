@@ -87,6 +87,7 @@ class Ui_MainWindow(object):
 
         #Signal et connection
         self.pushButton_acceuil.clicked.connect(self.buttonClicked_acceuil)
+        self.pushButton_oldAnalise.clicked.connect(self.buttonClicked_reFormualire)
 
     def buttonClicked_acceuil(self):
         print("acceuil")
@@ -110,6 +111,30 @@ class Ui_MainWindow(object):
 
         btn2 = QtWidgets.QPushButton("bouton :)", self.scrollArea)
         self.scrollArea.setWidget(btn2)
+
+        ######################################################################
+        #                                                                    #
+        #                      RELANCER ANALYSE                              #
+        #                                                                    #
+        ######################################################################
+
+    def buttonClicked_reFormualire(self):
+
+        self.scrollArea.hide()
+
+        self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 377, 342))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.gridLayout.addWidget(self.scrollArea, 0, 1, 1, 1)
+        MainWindow.setCentralWidget(self.centralwidget)
+
+        #new.remplisDico()
+
+        self.buttonClicked_newAnalyse()
 
         ######################################################################
         #                                                                    #
@@ -181,7 +206,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.label)
         self.label_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label_2.setObjectName("label_2")
-        self.label_2.setText("This information are rong : {0} \n".format(chaineCara))
+        self.label_2.setText("This information are rong or empty : {0} \n".format(chaineCara))
         self.horizontalLayout.addWidget(self.label_2)
         self.gridLayout_4.addLayout(self.horizontalLayout, 2, 0, 2, 2)
         self.gridLayout_3 = QtWidgets.QGridLayout()
@@ -403,11 +428,11 @@ class Ui_MainWindow(object):
                 infoErr+="- read {0}\n".format(i)
 
         #Si tout les champs sont valide on lance l'analyse :
-        if ChampsOk == 0 :
-            self.pushButton_runAnalysis.clicked.connect(self.RunAnalysis)
-        else :
+        #if ChampsOk == 0 :
+        self.pushButton_runAnalysis.clicked.connect(self.RunAnalysis)
+        #else :
             #pop up avec les champs qui pose probleme
-            self.pushButton_runAnalysis.clicked.connect(lambda: self.buttonClicked_newAnalyse_probleme(infoErr))
+        #    self.pushButton_runAnalysis.clicked.connect(lambda: self.buttonClicked_newAnalyse_probleme(infoErr))
 
 
         # run analis : création du fichier config avec class formulaire
@@ -870,6 +895,8 @@ class Ui_MainWindow(object):
         self.toolButton_GenRef.setText("...")
         self.toolButton_GenRef.clicked.connect(lambda: self.ouvrir_fichier(self.lineEdit_GenRef))
 
+        ##########################################################################################################
+
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.label_Read1 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
 
@@ -897,27 +924,24 @@ class Ui_MainWindow(object):
         ##### ajout des read :
         # 1 - hor layout
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-
         # 1 - label
         self.label_Read2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label_Read2.setObjectName("label_Read2")
         self.label_Read2.setText("[2] Séquences des reads :")
         self.horizontalLayout_3.addWidget(self.label_Read2)
-
         # 1 - line edit
         self.lineEdit_Read2 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_Read2.setObjectName("lineEdit_Read2")
         self.horizontalLayout_3.addWidget(self.lineEdit_Read2)
-
         # 1 - tool boutton
         self.toolButton_Read2 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
         self.toolButton_Read2.setObjectName("toolButton_Read2")
         self.toolButton_Read2.setText("...")
         self.horizontalLayout_3.addWidget(self.toolButton_Read2)
-
         self.gridLayout_3.addLayout(self.horizontalLayout_3, 4, 0, 1, 3)
-
         ### fin ajout des read
+
+        #######################################################################################
 
         self.pushButton_plus = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         self.pushButton_plus.setMaximumSize(QtCore.QSize(30, 30))
