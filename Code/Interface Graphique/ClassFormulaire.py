@@ -8,9 +8,14 @@ class Formulaire():
     def __init__(self):
         self.fichier=""
         self.dico = {}
+        self.listeChamps=["genRef","plateforme","sample","library","rgid","rgpu","backStrainId","mappStrainId","warnScaf", "referenced"]
+        for clef in self.listeChamps:
+            self.dico[clef]=""
+
 
     def etape1(self, genRef, nbrRead, listRead):
         self.dico["genRef"]=genRef
+        self.dico["nbrRead"]=nbrRead
         for i in range(nbrRead):
             read="read"
             read+=str(i)
