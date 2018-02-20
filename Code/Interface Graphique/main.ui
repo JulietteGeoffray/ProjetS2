@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>657</width>
-    <height>597</height>
+    <width>679</width>
+    <height>409</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -96,8 +96,11 @@
       </layout>
      </widget>
     </item>
-    <item row="0" column="2">
+    <item row="0" column="1">
      <widget class="QScrollArea" name="scrollArea">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
@@ -106,13 +109,13 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>377</width>
-         <height>530</height>
+         <width>399</width>
+         <height>342</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0" colspan="2">
-         <widget class="QLabel" name="label_etape1">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_NAtitre">
           <property name="maximumSize">
            <size>
             <width>16777215</width>
@@ -120,219 +123,104 @@
            </size>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;Formulaire : étape 1 sur 3&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Rechager une nouvelle analyse :&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="0" colspan="2">
-         <widget class="QLabel" name="label_titre_2">
-          <property name="maximumSize">
+        <item row="1" column="0">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
            <size>
-            <width>16777215</width>
-            <height>30</height>
+            <width>378</width>
+            <height>20</height>
            </size>
           </property>
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;# Your inputs :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
+         </spacer>
         </item>
-        <item row="2" column="0" colspan="3">
+        <item row="2" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
-           <widget class="QLabel" name="label_r1">
+           <widget class="QLabel" name="label_2">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="text">
-             <string>[1] Read   : </string>
+             <string>Nom de l'analyse  : </string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_r1"/>
-          </item>
-          <item>
-           <widget class="QToolButton" name="toolButton_r1">
-            <property name="text">
-             <string>...</string>
+           <widget class="Q3ComboBox" name="comboBox">
+            <property name="editable">
+             <bool>true</bool>
+            </property>
+            <property name="currentItem">
+             <number>0</number>
+            </property>
+            <property name="autoCompletion">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
          </layout>
         </item>
         <item row="3" column="0">
-         <widget class="QLabel" name="label_r2">
-          <property name="text">
-           <string>[2] Read   : </string>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
           </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="QLineEdit" name="lineEdit_r2"/>
-        </item>
-        <item row="3" column="2">
-         <widget class="QToolButton" name="toolButton_r2">
-          <property name="text">
-           <string>...</string>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>378</width>
+            <height>20</height>
+           </size>
           </property>
-         </widget>
+         </spacer>
         </item>
-        <item row="4" column="0" colspan="3">
+        <item row="4" column="0">
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>378</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="5" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QLabel" name="label_r3">
-            <property name="text">
-             <string>[3] Read   : </string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEdit_r3"/>
-          </item>
-          <item>
-           <widget class="QToolButton" name="toolButton_r3">
-            <property name="text">
-             <string>...</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="5" column="0" colspan="3">
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <item>
-           <widget class="QLabel" name="label_r4">
-            <property name="text">
-             <string>[4] Read   : </string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEdit_r4"/>
-          </item>
-          <item>
-           <widget class="QToolButton" name="toolButton_r4">
-            <property name="text">
-             <string>...</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="6" column="0" colspan="3">
-         <layout class="QHBoxLayout" name="horizontalLayout_5">
-          <item>
-           <widget class="QLabel" name="label_r5">
-            <property name="text">
-             <string>[5] Read   : </string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEdit_r5"/>
-          </item>
-          <item>
-           <widget class="QToolButton" name="toolButton_r5">
-            <property name="text">
-             <string>...</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="7" column="0" colspan="3">
-         <layout class="QHBoxLayout" name="horizontalLayout_6">
-          <item>
-           <widget class="QLabel" name="label_r6">
-            <property name="text">
-             <string>[6] Read   : </string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEdit_r6"/>
-          </item>
-          <item>
-           <widget class="QToolButton" name="toolButton_r6">
-            <property name="text">
-             <string>...</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="8" column="0" colspan="3">
-         <layout class="QHBoxLayout" name="horizontalLayout_7">
-          <item>
-           <widget class="QLabel" name="label_r7">
-            <property name="text">
-             <string>[7] Read   : </string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEdit_r7"/>
-          </item>
-          <item>
-           <widget class="QToolButton" name="toolButton_r7">
-            <property name="text">
-             <string>...</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="9" column="0" colspan="3">
-         <layout class="QHBoxLayout" name="horizontalLayout_8">
-          <item>
-           <widget class="QLabel" name="label_r8">
-            <property name="text">
-             <string>[8] Read   : </string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEdit_r8"/>
-          </item>
-          <item>
-           <widget class="QToolButton" name="toolButton_r8">
-            <property name="text">
-             <string>...</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="10" column="0" colspan="3">
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-           <widget class="QPushButton" name="pushButton">
-            <property name="text">
-             <string>Back</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_2">
+           <spacer name="horizontalSpacer_4">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>40</width>
+              <width>158</width>
               <height>20</height>
              </size>
             </property>
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_next_">
+           <widget class="QPushButton" name="pushButton">
             <property name="maximumSize">
              <size>
-              <width>16777215</width>
-              <height>16777215</height>
+              <width>150</width>
+              <height>30</height>
              </size>
             </property>
             <property name="text">
-             <string>Next</string>
+             <string>OK</string>
             </property>
            </widget>
           </item>
@@ -349,13 +237,20 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>657</width>
+     <width>679</width>
      <height>25</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Q3ComboBox</class>
+   <extends>QWidget</extends>
+   <header>Qt3Support/Q3ComboBox</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
