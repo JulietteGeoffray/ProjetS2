@@ -1,0 +1,43 @@
+2018-02-19 17:41:44.163066
+
+-----------Your Input-----------
+#NomAnalyse :
+mf76
+#GenRef
+gen ref
+#Nombre read :
+2
+#Read_0
+read 1
+#Read_1
+read 2
+
+-----------BGI-----------
+#plateforme :
+plat
+#sample :
+sam
+#library :
+lib
+#rgid :
+rg id
+#rgpu :
+rg pu
+
+-----------population design-----------
+#backStrainID :
+back id
+#referenced :
+0
+#mappStrainId :
+mapp id
+#dbSNP :
+dbsnp
+
+-----------Additionnal files-----------
+#ScaffList :
+list scaff
+#InvarScaf :
+inv scaff
+#warnScaf :
+warn scaf
