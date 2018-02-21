@@ -10,7 +10,7 @@ RUN mkdir -p /logiciel
 ENV VERSION=0.1.19
 ENV VERSION_BWA=0.7.13 
 ENV VERSION_PICARD=2.17.4
-ENV VERSION_R=3.3.3
+ENV VERSION_SNPeff=4_1d
 
 # Install Python 3, PyQt5, curl, bzip2, g++, ncurses-dev, zlib1g-dev
 RUN apt-get update && apt-get install -y \
@@ -76,7 +76,12 @@ RUN apt-get install -y r-base \
 	r-recommended
 RUN R -e "install.packages('ggplot2',repos='http://cran.us.r-project.org')"
 
+#SNPeff details
 
+RUN curl -L -o snpeff-$VERSION_SNPeff.zip http://downloads.sourceforge.net/project/snpeff/snpEff_v4_1d_core.zip
+
+RUN unzip snpeff-$VERSION_SNPeff.zip
+RUN rm -rf snpeff-$VERSION_SNPeff.zip
 
 #ADD qt5.py qt5.py
 
