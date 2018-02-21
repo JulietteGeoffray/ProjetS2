@@ -8,51 +8,50 @@ import datetime
 
 class Formulaire():
     def __init__(self):
+        #Dossier des fichier de config -> nom ajouter au moment du nexte de la première page du formulaire
         self.fichier=""
         self.dico = {}
-        self.listeChamps=["nom","genRef","plateforme","sample","library","rgid","rgpu","backStrainId","mappStrainId","warnScaf", "referenced"]
+        self.listeChamps=["nom","genRef","plateforme","sample","library","rgid","rgpu","backStrainId","mappStrainId", "referenced"]
         for clef in self.listeChamps:
             self.dico[clef]=""
 
-
     def etape1(self, genRef, nbrRead, listRead, nom):
-        self.dico["genRef"]=genRef
+        self.dico["genRef"]=genRef.strip("\n").strip(" ")
         self.dico["nbrRead"]=nbrRead
-        self.dico["nom"]=nom
+        self.dico["nom"]=str(nom).strip("\n").strip(" ")
+        self.fichier=nom
+        self.fichier+=".config"
 
         for i in range(len(listRead)):
             read="read"
             read+=str(i)
-            self.dico[read]=listRead[i]
-
-        self.fichier=nom
-        self.fichier+="_configFile"
-
-
+            self.dico[read]=listRead[i].strip("\n").strip(" ")
 
     def etape2(self, plateforme, sample, Library, rgid, rgpu):
-        self.dico["plateforme"]=plateforme
-        self.dico["sample"]=sample
-        self.dico["library"]=Library
-        self.dico["rgid"]=rgid
-        self.dico["rgpu"]=rgpu
+        self.dico["plateforme"]=plateforme.strip("\n").strip(" ")
+        self.dico["sample"]=sample.strip("\n").strip(" ")
+        self.dico["library"]=Library.strip("\n").strip(" ")
+        self.dico["rgid"]=rgid.strip("\n").strip(" ")
+        self.dico["rgpu"]=rgpu.strip("\n").strip(" ")
 
     def etape3(self,backStrainID, Referenced, MappStrainId, dbsnp):
-        self.dico["backStrainId"]=backStrainID
+        self.dico["backStrainId"]=backStrainID.strip("\n").strip(" ")
         self.dico["referenced"]=Referenced
-        self.dico["mappStrainId"]=MappStrainId
-        self.dico["dbSNP"]=dbsnp
+        self.dico["mappStrainId"]=MappStrainId.strip("\n").strip(" ")
+        self.dico["dbSNP"]=dbsnp.strip("\n").strip(" ")
 
     def etape4(self, listScaff, InvarScaf, warnScaf):
-        self.dico["listScaff"]=listScaff
-        self.dico["InvarScaf"]=InvarScaf
-        self.dico["warnScaf"]=warnScaf
+        self.dico["listScaff"]=listScaff.strip("\n").strip(" ")
+        self.dico["InvarScaf"]=InvarScaf.strip("\n").strip(" ")
+        self.dico["warnScaf"]=warnScaf.strip("\n").strip(" ")
 
     def setFichier(self, fichier):
         self.fichier=fichier
 
     def remplisConfig(self):
-        with open(self.fichier, "w") as fichier_sortie:
+        fic="/home/etudiant/Cours/M1S2/Projet/ProjetS2/FichierConfig/"
+        fic+=self.fichier
+        with open(fic, "w") as fichier_sortie:
             date = datetime.datetime.now()
             fichier_sortie.write(str(date))
             fichier_sortie.write("\n\n")
