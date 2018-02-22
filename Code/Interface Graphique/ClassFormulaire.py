@@ -11,7 +11,7 @@ class Formulaire():
         #Dossier des fichier de config -> nom ajouter au moment du nexte de la première page du formulaire
         self.fichier=""
         self.dico = {}
-        self.listeChamps=["nom","genRef","plateforme","sample","library","rgid","rgpu","backStrainId","mappStrainId", "referenced"]
+        self.listeChamps=["nom","genRef","plateforme","sample","dbSNPbool","library","rgid","rgpu","backStrainId","mappStrainId", "referenced"]
         for clef in self.listeChamps:
             self.dico[clef]=""
 
@@ -34,9 +34,10 @@ class Formulaire():
         self.dico["rgid"]=rgid.strip("\n").strip(" ")
         self.dico["rgpu"]=rgpu.strip("\n").strip(" ")
 
-    def etape3(self,backStrainID, Referenced, MappStrainId, dbsnp):
+    def etape3(self,backStrainID, Referenced, MappStrainId, dbsnp, dbSNPbool):
         self.dico["backStrainId"]=backStrainID.strip("\n").strip(" ")
         self.dico["referenced"]=Referenced
+        self.dico["dbSNPbool"]=dbSNPbool
         self.dico["mappStrainId"]=MappStrainId.strip("\n").strip(" ")
         self.dico["dbSNP"]=dbsnp.strip("\n").strip(" ")
 
@@ -76,6 +77,7 @@ class Formulaire():
             fichier_sortie.write("#backStrainID :\n{0}\n".format(self.dico["backStrainId"]))
             fichier_sortie.write("#referenced :\n{0}\n".format(self.dico["referenced"]))
             fichier_sortie.write("#mappStrainId :\n{0}\n".format(self.dico["mappStrainId"]))
+            fichier_sortie.write("#dbSNPbool :\n{0}\n".format(self.dico["dbSNPbool"]))
             fichier_sortie.write("#dbSNP :\n{0}\n\n".format(self.dico["dbSNP"]))
 
             fichier_sortie.write("-----------Additionnal files-----------\n")
@@ -134,6 +136,9 @@ class Formulaire():
             ligne=fichier_sortie.readline()
             ligne=fichier_sortie.readline()
             self.dico["mappStrainId"]=ligne
+            ligne=fichier_sortie.readline()
+            ligne=fichier_sortie.readline()
+            self.dico["dbSNPbool"]=int(ligne)
             ligne=fichier_sortie.readline()
             ligne=fichier_sortie.readline()
             self.dico["dbSNP"]=ligne

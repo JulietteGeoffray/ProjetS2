@@ -11,7 +11,7 @@ class Ui_MainWindow(object):
 
         ######################################################################
         #                                                                    #
-        #         Fenetre princiale (menu gauche + scroll bar area)          #
+        #      Fenetre princiale (menu gauche + scroll bar area vide)        #
         #                                                                    #
         ######################################################################
 
@@ -86,13 +86,17 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        #Signal et connection
+        #Signal et connection des boutons d'acceil
         self.pushButton_acceuil.clicked.connect(self.buttonClicked_acceuil)
         self.pushButton_oldAnalise.clicked.connect(self.buttonClicked_reFormualire)
         self.pushButton_newAnalyse.clicked.connect(lambda: self.buttonClicked_newAnalyse("nouvelle analyse"))
 
+        #variable qui gère le nombre de fichier de lecture (read) de l'analyse courante.
         self.nbr=2
+        #Dossier ou sont regrouper les fichiers de config
         self.dossierConfig="/home/etudiant/Cours/M1S2/Projet/ProjetS2/FichierConfig/"
+        #variable qui gère la provenance lors du lancement de la fonction qui gère la première page du formulaire
+        #Permet de gérer le comportement du dictionnaire.
         self.indication="Rien"
 
     def buttonClicked_acceuil(self):
@@ -146,8 +150,6 @@ class Ui_MainWindow(object):
         for line in sortie.stdout:
             self.listeConfigFiles.append(str(line.rstrip()).strip("b'").strip("'"))
 
-        #print(self.listeConfigFiles)
-
         self.label=[]
         for i in range(len(self.listeConfigFiles)):
             self.label.append("label_{0}".format(i))
@@ -168,6 +170,8 @@ class Ui_MainWindow(object):
         spacerItem2 = QtWidgets.QSpacerItem(158, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem2)
 
+        #affiche une liste de bouton radio en focntion du nombre de fichier de config présent
+        #et met en texte du bouton radio le nom de l'analyse.
         for i in range(len(self.listeConfigFiles)):
             self.label[i] = QtWidgets.QRadioButton(self.scrollAreaWidgetContents)
             self.label[i].setObjectName("label")
@@ -204,8 +208,8 @@ class Ui_MainWindow(object):
 
         ######################################################################
         #                                                                    #
-        #                          FORMULAIRE                                #
-        #                4 étapes + étape lance l'analyse                    #
+        #                          ANALYSE                                   #
+        #                                                                    #
         ######################################################################
 
         ######################################################################
@@ -236,6 +240,14 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.scrollArea, 0, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
+        
+
+        ######################################################################
+        #                                                                    #
+        #                          FORMULAIRE                                #
+        #             4 étapes + étape de vérification de champs             #
+        ######################################################################
+
         ######################################################################
         #               fenetre info si champs pas valide                    #
         ######################################################################
@@ -247,11 +259,10 @@ class Ui_MainWindow(object):
         InvarScaf=self.lineEdit_InvarScaf.text()
         warnScaf=self.lineEdit_warnScaf.text()
         # On les sauvegarde dans le dictionnaire qui gènre les champs
-        print("run analyse")
-        print(self.new.dico)
-        print(warnScaf)
-        self.new.etape4(listScaff, InvarScaf, warnScaf)
+        #print("run analyse")
         #print(self.new.dico)
+        #print(warnScaf)
+        self.new.etape4(listScaff, InvarScaf, warnScaf)
 
         self.scrollArea.hide()
         self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
@@ -277,7 +288,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.label)
         self.label_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label_2.setObjectName("label_2")
-        self.label_2.setText("This information are rong : {0} \n".format(chaineCara))
+        self.label_2.setText("This information are emppty : {0} \n".format(chaineCara))
         self.horizontalLayout.addWidget(self.label_2)
         self.gridLayout_4.addLayout(self.horizontalLayout, 2, 0, 2, 2)
         self.gridLayout_3 = QtWidgets.QGridLayout()
@@ -304,9 +315,13 @@ class Ui_MainWindow(object):
         #                      fenetre ouvrir fichier                        #
         ######################################################################
 
+    #Cette fonction permet d'ouvrir la fénêtre du gestionnaire de fichier
+    #et si un fichier est sélectionner de le récupere et remplir la champs de saisie
+    #associé (variable le passer en paramètre).
+    #Attention : si pluieurs fihiers sont sélectionner, seul le premier renseigner
+    #sera pris en compte.
     def ouvrir_fichier(self, le):
         win = classFiles.App()
-        #print(win.nomFichier)
         if win.nomFichier != "":
             le.setText(win.nomFichier[0])
 
@@ -329,8 +344,15 @@ class Ui_MainWindow(object):
         else:
             referenced=""
 
+        if self.radioButton_yesRef_bis.isChecked():
+            dbSNPbool=0
+        elif self.radioButton_noRef_bis.isChecked():
+            dbSNPbool=1
+        else:
+            dbSNPbool=""
+
         # On les sauvegarde dans le dictionnaire qui gènre les champs
-        self.new.etape3(backStrainID, referenced, mappStrainId, dbSNP)
+        self.new.etape3(backStrainID, referenced, mappStrainId, dbSNP,dbSNPbool)
         #print(self.new.dico)
 
         self.scrollArea.hide()
@@ -487,6 +509,10 @@ class Ui_MainWindow(object):
         self.pushButton_runAnalysis.setText("Run Analysis")
 
         #Vérification des champs :
+        #Pour l'instant sur les champs sont vide alors cela retourne un erreur,
+        #A voir pour améliorer en fonction des extention du fichier que l'on s'attent
+        # a avoir. Si c'est un VCF par exemple : spliter par "." et récupere la deuxieme
+        #valeurs pour verrifier qu'elle est bien égale a vcf.
         ChampsOk=0
         infoErr="\n\n"
         for champs in self.new.listeChamps:
@@ -494,12 +520,21 @@ class Ui_MainWindow(object):
                 ChampsOk=1
                 infoErr+="- {0}\n".format(champs)
 
+        #pour les read on vérifie pour tous qu'il ne soit pas vide.
         for i in range(self.new.dico["nbrRead"]):
             read="read"
             read+=str(i)
             if self.new.dico[read] == "" :
                 ChampsOk=1
                 infoErr+="- read {0}\n".format(i)
+
+
+        #On regarde en fonction de la valeur dbSNPbool si le Champs
+        # dbSNP doit être remplis ou non puis on vérifie qu'il le soit.
+        if self.new.dico["dbSNPbool"] == 0 :
+            if self.new.dico["dbSNP"] == "" :
+                ChampsOk=1
+                infoErr+="- {0}\n".format(champs)
 
         #Si tout les champs sont valide on lance l'analyse :
         if ChampsOk == 0 :
@@ -508,20 +543,25 @@ class Ui_MainWindow(object):
             #pop up avec les champs qui pose probleme
             self.pushButton_runAnalysis.clicked.connect(lambda: self.buttonClicked_newAnalyse_probleme(infoErr))
 
-
-        # run analis : création du fichier config avec class formulaire
-        # si la création du fichier renvoie ok on lance l'analyse
-        # sinon on renseigne le champs qui pose probleme et on chance sa valeur
-        # nouvelle vérif apres erreur
-        # -> dans une fenetre popup
-        # Boucle do - jusqu'a ce que ce sois bon puis on lance l'analise
-
         self.horizontalLayout.addWidget(self.pushButton_runAnalysis)
         self.gridLayout_2.addLayout(self.horizontalLayout, 6, 0, 1, 1)
 
-        #self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-        #self.gridLayout_3.addWidget(self.scrollArea, 0, 1, 1, 1)
-        #MainWindow.setCentralWidget(self.centralwidget)
+    ######################################################################
+    #                      Affichage dynamique                           #
+    ######################################################################
+
+    #Ces deux fonctions permettent d'affichier ou de cacher le champs du dbSNP
+    # elle sont lancer selon si on clique sur oui (cela affciher le champs)
+    # ou sur non, ce qui cache le champs.
+    def AfficheSidbSNPexistePas(self):
+        self.label_dbsnp.show()
+        self.lineEdit_dbsnp.show()
+        self.toolButton_dbsnp.show()
+
+    def CacheSidbSNPexiste(self):
+        self.label_dbsnp.hide()
+        self.lineEdit_dbsnp.hide()
+        self.toolButton_dbsnp.hide()
 
         ######################################################################
         #                      Formulaire - Etape 3                          #
@@ -594,9 +634,10 @@ class Ui_MainWindow(object):
 
         self.label_ref = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label_ref.setObjectName("label_ref")
-        self.label_ref.setText("Referenced  :                                                 ")
+        self.label_ref.setText("Referenced  :                                                         ")
 
         self.horizontalLayout.addWidget(self.label_ref)
+        self.ButtonGroup_snp = QtWidgets.QButtonGroup()
 
         self.radioButton_yesRef = QtWidgets.QRadioButton(self.scrollAreaWidgetContents)
         self.radioButton_yesRef.setObjectName("radioButton_yesRef")
@@ -607,6 +648,7 @@ class Ui_MainWindow(object):
                 self.radioButton_yesRef.setChecked(True)
 
         self.horizontalLayout.addWidget(self.radioButton_yesRef)
+        self.ButtonGroup_snp.addButton(self.radioButton_yesRef)
 
         self.radioButton_noRef = QtWidgets.QRadioButton(self.scrollAreaWidgetContents)
         self.radioButton_noRef.setObjectName("radioButton_noRef")
@@ -616,7 +658,47 @@ class Ui_MainWindow(object):
             if self.new.dico["referenced"] == 1:
                 self.radioButton_noRef.setChecked(True)
 
+        self.ButtonGroup_snp.addButton(self.radioButton_noRef)
         self.horizontalLayout.addWidget(self.radioButton_noRef)
+
+        #####################################################################################
+
+        self.horizontalLayout_bis = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_bis.setObjectName("horizontalLayout")
+
+        self.label_ref = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_ref.setObjectName("label_ref")
+        self.label_ref.setText("bd_SNP ente background et mapping  :       ")
+
+        self.horizontalLayout_bis.addWidget(self.label_ref)
+
+        self.ButtonGroup_snpbool = QtWidgets.QButtonGroup()
+
+        self.radioButton_yesRef_bis = QtWidgets.QRadioButton(self.scrollAreaWidgetContents)
+        self.radioButton_yesRef_bis.setObjectName("radioButton_yesRef")
+        self.radioButton_yesRef_bis.setText("yes")
+
+        if "dbSNPbool" in self.new.dico.keys():
+            if self.new.dico["dbSNPbool"] == 0:
+                self.radioButton_yesRef_bis.setChecked(True)
+
+        self.ButtonGroup_snpbool.addButton(self.radioButton_yesRef_bis)
+        self.horizontalLayout_bis.addWidget(self.radioButton_yesRef_bis)
+
+        self.radioButton_noRef_bis = QtWidgets.QRadioButton(self.scrollAreaWidgetContents)
+        self.radioButton_noRef_bis.setObjectName("radioButton_noRef")
+        self.radioButton_noRef_bis.setText("no")
+
+        if "dbSNPbool" in self.new.dico.keys():
+            if self.new.dico["dbSNPbool"] == 1:
+                self.radioButton_noRef_bis.setChecked(True)
+
+        self.ButtonGroup_snpbool.addButton(self.radioButton_noRef_bis)
+        self.horizontalLayout_bis.addWidget(self.radioButton_noRef_bis)
+
+        self.gridLayout_3.addLayout(self.horizontalLayout_bis, 5, 0, 1, 1)
+
+        ########################################################################
 
         self.gridLayout_3.addLayout(self.horizontalLayout, 3, 0, 1, 1)
 
@@ -674,11 +756,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_17.addWidget(self.toolButton_dbsnp)
 
-        self.gridLayout_3.addLayout(self.horizontalLayout_17, 5, 0, 1, 1)
+        self.gridLayout_3.addLayout(self.horizontalLayout_17, 6, 0, 1, 1)
 
         spacerItem = QtWidgets.QSpacerItem(470, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
 
-        self.gridLayout_3.addItem(spacerItem, 6, 0, 1, 1)
+        self.gridLayout_3.addItem(spacerItem, 7, 0, 1, 1)
 
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
@@ -701,10 +783,24 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_2.addWidget(self.pushButton_next3)
 
+        if self.new.dico["dbSNPbool"] == 1 :
+                self.label_dbsnp.hide()
+                self.lineEdit_dbsnp.hide()
+                self.toolButton_dbsnp.hide()
+        else :
+            if not "dbSNPbool" in self.new.dico.keys():
+                self.label_dbsnp.hide()
+                self.lineEdit_dbsnp.hide()
+                self.toolButton_dbsnp.hide()
+
+        self.radioButton_yesRef_bis.clicked.connect(self.AfficheSidbSNPexistePas)
+        self.radioButton_noRef_bis.clicked.connect(self.CacheSidbSNPexiste)
+
         self.gridLayout_3.addLayout(self.horizontalLayout_2, 7, 0, 1, 1)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout.addWidget(self.scrollArea, 0, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
+
 
         ######################################################################
         #                      Formulaire - Etape 2                          #
@@ -747,7 +843,6 @@ class Ui_MainWindow(object):
 
         # On les sauvegarde dans le dictionnaire qui gènre les champs
         self.new.etape1(GenRef, self.nbr, read, nom)
-        #print(self.new.dico)
 
         ## Mise en place des champs de formulaire pour l'affichage de l'étape 2
         # Cacher les ancien champs en cachant la scroll area
@@ -809,6 +904,10 @@ class Ui_MainWindow(object):
         self.lineEdit_sample.setObjectName("lineEdit_sample")
         self.lineEdit_sample.setText("")
 
+        #Si la clef est dans le dictionnaire et si la valeur associé n'est pas vide
+        #C'est qu'une information est déja présente alors on l'affiche dans la ligne de saisie.
+        #Elle peut être présente pasque qu'on la déjà remplis et que l'on revien en arrière dans le dictionnaire
+        #ou qu'on a charger une ancienne annalyse.
         if "sample" in self.new.dico.keys():
             if self.new.dico["sample"] != "":
                 self.lineEdit_sample.setText(self.new.dico["sample"])
@@ -830,6 +929,10 @@ class Ui_MainWindow(object):
         self.lineEdit_library.setObjectName("lineEdit_library")
         self.lineEdit_library.setText("")
 
+        #Si la clef est dans le dictionnaire et si la valeur associé n'est pas vide
+        #C'est qu'une information est déja présente alors on l'affiche dans la ligne de saisie.
+        #Elle peut être présente pasque qu'on la déjà remplis et que l'on revien en arrière dans le dictionnaire
+        #ou qu'on a charger une ancienne annalyse.
         if "library" in self.new.dico.keys():
             if self.new.dico["library"] != "":
                 self.lineEdit_library.setText(self.new.dico["library"])
@@ -857,6 +960,10 @@ class Ui_MainWindow(object):
         self.lineEdit_rgid = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_rgid.setObjectName("lineEdit_rgid")
 
+        #Si la clef est dans le dictionnaire et si la valeur associé n'est pas vide
+        #C'est qu'une information est déja présente alors on l'affiche dans la ligne de saisie.
+        #Elle peut être présente pasque qu'on la déjà remplis et que l'on revien en arrière dans le dictionnaire
+        #ou qu'on a charger une ancienne annalyse.
         if "rgid" in self.new.dico.keys():
             if self.new.dico["rgid"] != "":
                 self.lineEdit_rgid.setText(self.new.dico["rgid"])
@@ -885,6 +992,10 @@ class Ui_MainWindow(object):
         self.lineEdit_rgpu = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_rgpu.setObjectName("lineEdit_rgpu")
 
+        #Si la clef est dans le dictionnaire et si la valeur associé n'est pas vide
+        #C'est qu'une information est déja présente alors on l'affiche dans la ligne de saisie.
+        #Elle peut être présente pasque qu'on la déjà remplis et que l'on revien en arrière dans le dictionnaire
+        #ou qu'on a charger une ancienne annalyse.
         if "rgpu" in self.new.dico.keys():
             if self.new.dico["rgpu"] != "":
                 self.lineEdit_rgpu.setText(self.new.dico["rgpu"])
@@ -906,6 +1017,10 @@ class Ui_MainWindow(object):
         self.lineEdit_plateforme.setObjectName("lineEdit_plateforme")
         self.lineEdit_plateforme.setText("")
 
+        #Si la clef est dans le dictionnaire et si la valeur associé n'est pas vide
+        #C'est qu'une information est déja présente alors on l'affiche dans la ligne de saisie.
+        #Elle peut être présente pasque qu'on la déjà remplis et que l'on revien en arrière dans le dictionnaire
+        #ou qu'on a charger une ancienne annalyse.
         if "plateforme" in self.new.dico.keys():
             if self.new.dico["plateforme"] != "":
                 self.lineEdit_plateforme.setText(self.new.dico["plateforme"])
@@ -945,6 +1060,9 @@ class Ui_MainWindow(object):
         #       fonction permettant de dynamiser les ligne info de read      #
         ######################################################################
 
+    #Cette fonction permet l'affichage de moins de champs de lecture (read) en fonction
+    #de ceux qui sont déja présent dans l'anayse. Elle se sert de l'indication donner
+    #par self.nbr et le met a jours.
     def moins (self, nbr):
 
         if self.nbr==4 :
@@ -1052,6 +1170,11 @@ class Ui_MainWindow(object):
 
             self.nbr=6
 
+    #Cette fonction permet l'affichage de plus de champs de lecture (read) en fonction
+    #de ceux qui sont déja présent dans l'anayse. Elle se sert de l'indication donner
+    #par self.nbr et le met a jours. Si on affiche 4 champs et que l'on en remplis que deux
+    #le formulaire va lever une erreur puisque deux champs serons vide. Si on a vraiment
+    #que deux champs il faufra cacher deux champs.
     def plus (self):
 
         if self.nbr == 2 :
@@ -1159,8 +1282,6 @@ class Ui_MainWindow(object):
 
             self.nbr=8
 
-
-
         ######################################################################
         #                      Formulaire - Etape 1                          #
         ######################################################################
@@ -1169,19 +1290,28 @@ class Ui_MainWindow(object):
 
     def buttonClicked_newAnalyse(self, indicationDeOuLonViens, fichier=None):
         print("nouvelle annalyse")
-
         self.scrollArea.hide()
 
-        #définition du dictionnaire:
-        if indicationDeOuLonViens == "back":
-            #on change rien
-            #print("viens de retour")
-            pass
+        #Selon d'ou on viens (de quelle bouton nous a amener a cette premiere page du formulaire)
+        #le ditionnaire ne se comporte pas de la même manière, une varriable passer en paramettre de
+        #la fonction nous l'indique donc.
 
+        #Si l'on viens du bouton back de la page deux du dictionnaire on veux les information du
+        #dictionnaire utilisé (en cours) donc on ne fait rien.
+        if indicationDeOuLonViens == "back":
+            pass
+        #Si l'on viens du bouton ok de la première page de recharge d'une analyse on veux charger en mémoire
+        #le dictionnaire de l'ancienne analyse (fonction remplisDico de la classe formulaire)
+        #On efface aussi le titre dans ce dictionnaire pour ne pas ecracraser par erreur le formulaire de l'nalyse
+        #que l'on recharge, et être obliger de lui donner un nouveau titre (il faut eviter de lui donner exactement
+        #le même nom).
+        #On met a jours le nombre de fichier de lectures (read) ensuite en fonction des données présente
+        #dans le dictionnaire charger.
         if indicationDeOuLonViens == "fichierConfigue":
             #print("viens de re forme")
             self.new=ClassFormulaire.Formulaire()
             self.new.remplisDico(fichier)
+            self.new.dico["nom"]=""
             if "read1" in self.new.dico.keys():
                 #print("1")
                 self.nbr=2
@@ -1194,6 +1324,8 @@ class Ui_MainWindow(object):
             if "read7" in self.new.dico.keys():
                 #print("7")
                 self.nbr=8
+        #Si l'on viens du bouton nouvelle analyse du menu gauche on veux vider le dictionnaire
+        #si il contient déjà des données pour démaré une nnouvelle analyse.
         if indicationDeOuLonViens == "nouvelle analyse" :
             #print("viens de nouvelle analyse")
             self.new=ClassFormulaire.Formulaire()
@@ -1214,7 +1346,7 @@ class Ui_MainWindow(object):
         self.label_etape1 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label_etape1.setMaximumSize(QtCore.QSize(16777215, 30))
         self.label_etape1.setObjectName("label_etape1")
-        self.label_etape1.setText("<html><head/><body><p align=\"center\"><span style=\" font-weight:600; font-style:italic;\">Formulaire : étape 1 sur 3</span></p></body></html>")
+        self.label_etape1.setText("<html><head/><body><p align=\"center\"><span style=\" font-weight:600; font-style:italic;\">Formulaire : étape 1 sur 4</span></p></body></html>")
 
         self.gridLayout_3.addWidget(self.label_etape1, 0, 0, 1, 1)
         self.label_titre1 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
@@ -1234,6 +1366,10 @@ class Ui_MainWindow(object):
         self.lineEdit_nom = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_nom.setObjectName("lineEdit_nom")
 
+        #Si la clef est dans le dictionnaire et si la valeur associé n'est pas vide
+        #C'est qu'une information est déja présente alors on l'affiche dans la ligne de saisie.
+        #Elle peut être présente pasque qu'on la déjà remplis et que l'on revien en arrière dans le dictionnaire
+        #ou qu'on a charger une ancienne annalyse.
         if "nom" in self.new.dico.keys():
             if self.new.dico["nom"] != "":
                 self.lineEdit_nom.setText(self.new.dico["nom"])
@@ -1256,6 +1392,10 @@ class Ui_MainWindow(object):
         self.toolButton_genRef.setText("...")
         self.toolButton_genRef.clicked.connect(lambda: self.ouvrir_fichier(self.lineEdit_genRef))
 
+        #Si la clef est dans le dictionnaire et si la valeur associé n'est pas vide
+        #C'est qu'une information est déja présente alors on l'affiche dans la ligne de saisie.
+        #Elle peut être présente pasque qu'on la déjà remplis et que l'on revien en arrière dans le dictionnaire
+        #ou qu'on a charger une ancienne annalyse.
         if "genRef" in self.new.dico.keys():
             if self.new.dico["genRef"] != "":
                 self.lineEdit_genRef.setText(self.new.dico["genRef"])
@@ -1273,6 +1413,10 @@ class Ui_MainWindow(object):
         self.lineEdit_r1 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_r1.setObjectName("lineEdit_r1")
 
+        #Si la clef est dans le dictionnaire et si la valeur associé n'est pas vide
+        #C'est qu'une information est déja présente alors on l'affiche dans la ligne de saisie.
+        #Elle peut être présente pasque qu'on la déjà remplis et que l'on revien en arrière dans le dictionnaire
+        #ou qu'on a charger une ancienne annalyse.
         if "read0" in self.new.dico.keys():
             if self.new.dico["read0"] != "":
                 self.lineEdit_r1.setText(self.new.dico["read0"])
@@ -1295,6 +1439,10 @@ class Ui_MainWindow(object):
         self.lineEdit_r2 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_r2.setObjectName("lineEdit_r2")
 
+        #Si la clef est dans le dictionnaire et si la valeur associé n'est pas vide
+        #C'est qu'une information est déja présente alors on l'affiche dans la ligne de saisie.
+        #Elle peut être présente pasque qu'on la déjà remplis et que l'on revien en arrière dans le dictionnaire
+        #ou qu'on a charger une ancienne annalyse.
         if "read1" in self.new.dico.keys():
             if self.new.dico["read1"] != "":
                 self.lineEdit_r2.setText(self.new.dico["read1"])
@@ -1317,6 +1465,10 @@ class Ui_MainWindow(object):
         self.lineEdit_r3 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_r3.setObjectName("lineEdit_r3")
 
+        #Si la clef est dans le dictionnaire et si la valeur associé n'est pas vide
+        #C'est qu'une information est déja présente alors on l'affiche dans la ligne de saisie.
+        #Elle peut être présente pasque qu'on la déjà remplis et que l'on revien en arrière dans le dictionnaire
+        #ou qu'on a charger une ancienne annalyse.
         if "read2" in self.new.dico.keys():
             if self.new.dico["read2"] != "":
                 self.lineEdit_r3.setText(self.new.dico["read2"])
@@ -1339,6 +1491,10 @@ class Ui_MainWindow(object):
         self.lineEdit_r4 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_r4.setObjectName("lineEdit_r4")
 
+        #Si la clef est dans le dictionnaire et si la valeur associé n'est pas vide
+        #C'est qu'une information est déja présente alors on l'affiche dans la ligne de saisie.
+        #Elle peut être présente pasque qu'on la déjà remplis et que l'on revien en arrière dans le dictionnaire
+        #ou qu'on a charger une ancienne annalyse.
         if "read3" in self.new.dico.keys():
             if self.new.dico["read3"] != "":
                 self.lineEdit_r4.setText(self.new.dico["read3"])
@@ -1361,6 +1517,10 @@ class Ui_MainWindow(object):
         self.lineEdit_r5 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_r5.setObjectName("lineEdit_r5")
 
+        #Si la clef est dans le dictionnaire et si la valeur associé n'est pas vide
+        #C'est qu'une information est déja présente alors on l'affiche dans la ligne de saisie.
+        #Elle peut être présente pasque qu'on la déjà remplis et que l'on revien en arrière dans le dictionnaire
+        #ou qu'on a charger une ancienne annalyse.
         if "read4" in self.new.dico.keys():
             if self.new.dico["read4"] != "":
                 self.lineEdit_r5.setText(self.new.dico["read4"])
@@ -1383,6 +1543,10 @@ class Ui_MainWindow(object):
         self.lineEdit_r6 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_r6.setObjectName("lineEdit_r6")
 
+        #Si la clef est dans le dictionnaire et si la valeur associé n'est pas vide
+        #C'est qu'une information est déja présente alors on l'affiche dans la ligne de saisie.
+        #Elle peut être présente pasque qu'on la déjà remplis et que l'on revien en arrière dans le dictionnaire
+        #ou qu'on a charger une ancienne annalyse.
         if "read5" in self.new.dico.keys():
             if self.new.dico["read5"] != "":
                 self.lineEdit_r6.setText(self.new.dico["read5"])
@@ -1405,6 +1569,10 @@ class Ui_MainWindow(object):
         self.lineEdit_r7 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_r7.setObjectName("lineEdit_r7")
 
+        #Si la clef est dans le dictionnaire et si la valeur associé n'est pas vide
+        #C'est qu'une information est déja présente alors on l'affiche dans la ligne de saisie.
+        #Elle peut être présente pasque qu'on la déjà remplis et que l'on revien en arrière dans le dictionnaire
+        #ou qu'on a charger une ancienne annalyse.
         if "read6" in self.new.dico.keys():
             if self.new.dico["read6"] != "":
                 self.lineEdit_r7.setText(self.new.dico["read6"])
@@ -1427,6 +1595,10 @@ class Ui_MainWindow(object):
         self.lineEdit_r8 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.lineEdit_r8.setObjectName("lineEdit_r8")
 
+        #Si la clef est dans le dictionnaire et si la valeur associé n'est pas vide
+        #C'est qu'une information est déja présente alors on l'affiche dans la ligne de saisie.
+        #Elle peut être présente pasque qu'on la déjà remplis et que l'on revien en arrière dans le dictionnaire
+        #ou qu'on a charger une ancienne annalyse.
         if "read7" in self.new.dico.keys():
             if self.new.dico["read7"] != "":
                 self.lineEdit_r8.setText(self.new.dico["read7"])
@@ -1438,7 +1610,9 @@ class Ui_MainWindow(object):
         self.toolButton_r8.clicked.connect(lambda: self.ouvrir_fichier(self.lineEdit_r8))
 
         ####################
-        #gestion du dynasisme des wigets
+        #gestion du dynasisme des ligne de saisie des fichiers de lectures.
+        #La variable self.nbr gère le nombre de fichiers de lectures nécessaire a
+        #l'analyse en cours.
 
         if self.nbr==2:
             self.label_r3.hide()
@@ -1546,8 +1720,6 @@ class Ui_MainWindow(object):
 
 if __name__ == "__main__":
     import sys
-    #new=ClassFormulaire.Formulaire()
-    #new.nbr=2
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
