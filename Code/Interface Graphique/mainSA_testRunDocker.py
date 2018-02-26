@@ -5,6 +5,7 @@ import subprocess
 
 import ClassFormulaire
 import classFiles
+import ClassTache1RunDocker
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -239,6 +240,12 @@ class Ui_MainWindow(object):
 
         self.listeEtape=["etape1","etape2","etape3","etape4"]
         self.labelEx=[]
+
+        ### Docker test avec un echo toute les 30s ecrit dans un fichier
+        docker=ClassTache1RunDocker.RunDocker()
+        docker.start()
+
+        ################################################################
 
         self.gridLayout_3 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_3.setObjectName("gridLayout_3")
