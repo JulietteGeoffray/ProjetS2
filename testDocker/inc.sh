@@ -1,10 +1,11 @@
 #!/bin/bash
 
+echo "docker" > /home/etudiant/Bureau/Projet/ProjetS2/testDocker/files.txt
+
 for number in {1..10}
 do
-echo "$number " >> /home/etudiant/Bureau/Projet/ProjetS2/testDocker/files.txt
-echo "files crer"
-pwd
-sleep 1
+echo "Etape $number" > /home/etudiant/Bureau/Projet/ProjetS2/testDocker/files.txt
+sleep 4
+echo "en cours"
 done
 exit 0

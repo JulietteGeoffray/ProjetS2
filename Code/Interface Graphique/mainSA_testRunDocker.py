@@ -2,6 +2,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import subprocess
+import time
 
 import ClassFormulaire
 import classFiles
@@ -213,6 +214,69 @@ class Ui_MainWindow(object):
         #                                                                    #
         ######################################################################
 
+    def updatePageExPipeline (self, listeWidget):
+        print("update de la fenetre")
+        self.labelEx=[]
+        place=2
+
+        for i in listeWidget :
+            self.labelEx.append("labelExecution_{0}".format(i))
+
+        self.scrollArea.hide()
+        self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 377, 342))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.gridLayout.addWidget(self.scrollArea, 0, 1, 1, 1)
+        MainWindow.setCentralWidget(self.centralwidget)
+
+        self.gridLayout_3 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
+        self.gridLayout_3.setObjectName("gridLayout_3")
+
+        self.label = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.label.setObjectName("label")
+        self.label.setText("<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600;\">Exécution du pipeline </span></p></body></html>")
+        self.gridLayout_3.addWidget(self.label, 0, 0, 1, 1)
+
+        '''self.label_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_2.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.label_2.setTextFormat(QtCore.Qt.AutoText)
+        self.label_2.setObjectName("label_2")
+        self.label_2.setText("<html><head/><body><p><span style=\" font-style:italic; color:#ababab;\">Etape fini</span></p></body></html>")
+        self.gridLayout_3.addWidget(self.label_2, 1, 0, 1, 1)'''
+
+        debut_fini="<html><head/><body><p><span style=\" font-style:italic; color:#ababab;\">"
+        fin_fini="</span></p></body></html>"
+
+        for label in range(len(self.labelEx)-1):
+            self.labelEx[label] = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+            self.labelEx[label].setMaximumSize(QtCore.QSize(16777215, 50))
+            self.labelEx[label].setObjectName("label")
+            text=debut_fini
+            text+=str(listeWidget[label])
+            text+=fin_fini
+            self.labelEx[label].setText(text)
+            self.gridLayout_3.addWidget(self.labelEx[label], place, 0, 1, 1)
+            self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+            place+=1
+
+        self.labelEx[label] = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.labelEx[label].setMaximumSize(QtCore.QSize(16777215, 50))
+        self.labelEx[label].setObjectName("label")
+        text="<html><head/><body><p><span style=\"font-size:12pt; font-weight:600; color:#e84d50;\">"
+        text+=str(listeWidget[len(listeWidget)-1])
+        text+="</span></p></body></html>"
+        self.labelEx[label].setText(text)
+        self.gridLayout_3.addWidget(self.labelEx[label], place, 0, 1, 1)
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
+        self.gridLayout.addWidget(self.scrollArea, 0, 1, 1, 1)
+        MainWindow.setCentralWidget(self.centralwidget)
+
         ######################################################################
         #               formualire end -> lance l'analyse                    #
         ######################################################################
@@ -227,6 +291,12 @@ class Ui_MainWindow(object):
         # On les sauvegarde dans le dictionnaire qui gènre les champs
         self.new.etape4(listScaff, InvarScaf, warnScaf)
 
+        self.listeEtape=["etape1","etape2","Etape3","Etape4","Etape5","Etape6","Etape7","Etape8","Etape9","Etape10"]
+
+        ### Docker test avec un echo toute les 30s ecrit dans un fichier
+        docker=ClassTache1RunDocker.RunDocker()
+        docker.start()
+
         self.scrollArea.hide()
         self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
         self.scrollArea.setWidgetResizable(True)
@@ -238,65 +308,32 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.scrollArea, 0, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
-        self.listeEtape=["etape1","etape2","etape3","etape4"]
-        self.labelEx=[]
-
-        ### Docker test avec un echo toute les 30s ecrit dans un fichier
-        docker=ClassTache1RunDocker.RunDocker()
-        docker.start()
-
-        ################################################################
-
         self.gridLayout_3 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_3.setObjectName("gridLayout_3")
+
+        texte=str(time.time())
+
         self.label = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label.setMaximumSize(QtCore.QSize(16777215, 50))
         self.label.setObjectName("label")
         self.label.setText("<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600;\">Exécution du pipeline </span></p></body></html>")
         self.gridLayout_3.addWidget(self.label, 0, 0, 1, 1)
 
-        self.label_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.label_2.setMaximumSize(QtCore.QSize(16777215, 30))
-        self.label_2.setTextFormat(QtCore.Qt.AutoText)
-        self.label_2.setObjectName("label_2")
-        self.label_2.setText("<html><head/><body><p><span style=\" font-style:italic; color:#ababab;\">Etape fini</span></p></body></html>")
-        self.gridLayout_3.addWidget(self.label_2, 1, 0, 1, 1)
+        time.sleep(3)
 
-        for i in self.listeEtape :
-            self.labelEx.append("labelExecution_{0}".format(i))
-        print(self.labelEx)
-
-        #variable pour gérer la position dans la grille
-        place=2
-        htmlDebut="<html><head/><body><p><span style=\"font-size:12pt; font-weight:600; color:#e84d50;\">"
-        htmlFin="</span></p></body></html>"
-        for i in range(len(self.labelEx)):
-            self.labelEx[i] = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-            self.labelEx[i].setMaximumSize(QtCore.QSize(16777215, 30))
-            self.labelEx[i].setObjectName("label_3")
-            texte=htmlDebut
-            texte+=self.listeEtape[i]
-            texte+=htmlFin
-            self.labelEx[i].setText(texte)
-            self.gridLayout_3.addWidget(self.labelEx[i], place, 0, 1, 1)
-            place+=1
-
-        self.label_4 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.label_4.setMaximumSize(QtCore.QSize(16777215, 30))
-        self.label_4.setObjectName("label_4")
-        self.label_4.setText("<html><head/><body><p><span style=\" font-style:italic;\">Etape pas encore abordé</span></p></body></html>")
-        self.gridLayout_3.addWidget(self.label_4, 3, 0, 1, 1)
-        self.label_4.hide()
-
-        self.progressBar = QtWidgets.QProgressBar(self.scrollAreaWidgetContents)
-        self.progressBar.setProperty("value", 50)
-        self.progressBar.setInvertedAppearance(False)
-        self.progressBar.setTextDirection(QtWidgets.QProgressBar.TopToBottom)
-        self.progressBar.setObjectName("progressBar")
-        self.gridLayout_3.addWidget(self.progressBar, place+1, 0, 1, 1)
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-        self.gridLayout.addWidget(self.scrollArea, 0, 1, 1, 1)
-        MainWindow.setCentralWidget(self.centralwidget)
+        nombre_precedent=[""]
+        while docker.etat == True:
+            with open("/home/etudiant/Bureau/Projet/ProjetS2/testDocker/files.txt", "r") as fichier:
+                ligne=fichier.readlines()
+                try:
+                    nombre_encours=ligne[0].strip("\n").strip(" ")
+                except:
+                    nombre_encours=str(666)
+            if nombre_encours != nombre_precedent[len(nombre_precedent)-1] and nombre_encours != '666':
+                nombre_precedent.append(nombre_encours)
+                self.updatePageExPipeline(nombre_precedent)
+                print("changement {0}".format(nombre_precedent))
+                time.sleep(2)
 
         ######################################################################
         #                                                                    #
@@ -315,9 +352,6 @@ class Ui_MainWindow(object):
         InvarScaf=self.lineEdit_InvarScaf.text()
         warnScaf=self.lineEdit_warnScaf.text()
         # On les sauvegarde dans le dictionnaire qui gènre les champs
-        #print("run analyse")
-        #print(self.new.dico)
-        #print(warnScaf)
         self.new.etape4(listScaff, InvarScaf, warnScaf)
 
         self.scrollArea.hide()

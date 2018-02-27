@@ -121,7 +121,7 @@ class Formulaire():
             ligne=fichier_sortie.readline()
             ligne=fichier_sortie.readline()
             self.dico["rgid"]=ligne
-            print(ligne)
+            #print(ligne)
             ligne=fichier_sortie.readline()
             ligne=fichier_sortie.readline()
             self.dico["rgpu"]=ligne
@@ -153,4 +153,4 @@ class Formulaire():
             ligne=fichier_sortie.readline()
             ligne=fichier_sortie.readline()
             self.dico["warnScaf"]=ligne
-            print(ligne)
+            #print(ligne)
