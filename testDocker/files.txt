@@ -1,1 +1,6 @@
-Etape 10
+Etape 1_Etape 2_Etape 3_Etape 4_Etape 5_FIN
+Etape 1
+Etape 2
+Etape 3
+Etape 4
+Etape 5

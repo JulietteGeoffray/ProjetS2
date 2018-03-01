@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import *
 import subprocess
 import time
 
@@ -114,8 +115,11 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.scrollArea, 0, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
-        btn2 = QtWidgets.QPushButton("bouton :)", self.scrollArea)
-        self.scrollArea.setWidget(btn2)
+        liste=[]
+
+        for i in range(10):
+            liste.append(i)
+            self.updatePageExPipeline(liste)
 
         ######################################################################
         #                                                                    #
@@ -242,15 +246,10 @@ class Ui_MainWindow(object):
         self.label.setText("<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600;\">Exécution du pipeline </span></p></body></html>")
         self.gridLayout_3.addWidget(self.label, 0, 0, 1, 1)
 
-        '''self.label_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.label_2.setMaximumSize(QtCore.QSize(16777215, 30))
-        self.label_2.setTextFormat(QtCore.Qt.AutoText)
-        self.label_2.setObjectName("label_2")
-        self.label_2.setText("<html><head/><body><p><span style=\" font-style:italic; color:#ababab;\">Etape fini</span></p></body></html>")
-        self.gridLayout_3.addWidget(self.label_2, 1, 0, 1, 1)'''
-
         debut_fini="<html><head/><body><p><span style=\" font-style:italic; color:#ababab;\">"
         fin_fini="</span></p></body></html>"
+
+        label=0
 
         for label in range(len(self.labelEx)-1):
             self.labelEx[label] = QtWidgets.QLabel(self.scrollAreaWidgetContents)
@@ -291,7 +290,9 @@ class Ui_MainWindow(object):
         # On les sauvegarde dans le dictionnaire qui gènre les champs
         self.new.etape4(listScaff, InvarScaf, warnScaf)
 
-        self.listeEtape=["etape1","etape2","Etape3","Etape4","Etape5","Etape6","Etape7","Etape8","Etape9","Etape10"]
+        self.new.remplisConfig()
+
+        '''self.listeEtape=["etape1","etape2","Etape3","Etape4","Etape5","Etape6","Etape7","Etape8","Etape9","Etape10"]'''
 
         ### Docker test avec un echo toute les 30s ecrit dans un fichier
         docker=ClassTache1RunDocker.RunDocker()
@@ -311,29 +312,40 @@ class Ui_MainWindow(object):
         self.gridLayout_3 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_3.setObjectName("gridLayout_3")
 
-        texte=str(time.time())
-
         self.label = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label.setMaximumSize(QtCore.QSize(16777215, 50))
         self.label.setObjectName("label")
         self.label.setText("<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600;\">Exécution du pipeline </span></p></body></html>")
         self.gridLayout_3.addWidget(self.label, 0, 0, 1, 1)
 
-        time.sleep(3)
+        script = False
+        listeEtape=[]
+        lecturefic=0
 
-        nombre_precedent=[""]
-        while docker.etat == True:
+        while lecturefic == 0:
+            try:
+                with open("/home/etudiant/Bureau/Projet/ProjetS2/testDocker/files.txt", "r") as fichier:
+                    ligne=fichier.readline()
+                    listeEtape=ligne.strip("\n").split("_")
+                    print(listeEtape)
+                    lecturefic = 1
+            except:
+                pass
+
+        listeEnCours=[]
+
+        while script == False:
             with open("/home/etudiant/Bureau/Projet/ProjetS2/testDocker/files.txt", "r") as fichier:
+                ligne=fichier.readline()
                 ligne=fichier.readlines()
-                try:
-                    nombre_encours=ligne[0].strip("\n").strip(" ")
-                except:
-                    nombre_encours=str(666)
-            if nombre_encours != nombre_precedent[len(nombre_precedent)-1] and nombre_encours != '666':
-                nombre_precedent.append(nombre_encours)
-                self.updatePageExPipeline(nombre_precedent)
-                print("changement {0}".format(nombre_precedent))
-                time.sleep(2)
+            for i in range(len(ligne)):
+                ligne[i]=ligne[i].strip("\n")
+            if ligne != listeEnCours and len(ligne) != 0:
+                listeEnCours=ligne
+                self.updatePageExPipeline(ligne)
+                if listeEnCours[len(ligne)-1] == listeEtape[len(listeEtape)-2]:
+                    script=True
+
 
         ######################################################################
         #                                                                    #

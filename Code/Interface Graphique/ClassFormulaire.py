@@ -20,7 +20,7 @@ class Formulaire():
         self.dico["nbrRead"]=nbrRead
         self.dico["nom"]=str(nom).strip("\n").strip(" ")
         self.fichier=nom
-        self.fichier+=".config"
+        self.fichier+="_config.py"
 
         for i in range(len(listRead)):
             read="read"
@@ -53,104 +53,17 @@ class Formulaire():
         fic="/home/etudiant/Cours/M1S2/Projet/ProjetS2/FichierConfig/"
         fic+=self.fichier
         with open(fic, "w") as fichier_sortie:
-            date = datetime.datetime.now()
-            fichier_sortie.write(str(date))
-            fichier_sortie.write("\n\n")
-            fichier_sortie.write("-----------Your Input-----------\n")
-            fichier_sortie.write("#NomAnalyse :\n{0}\n".format(self.dico["nom"]))
-            fichier_sortie.write("#GenRef\n{0}\n".format(self.dico["genRef"]))
-            fichier_sortie.write("#Nombre read :\n{0}\n".format(self.dico["nbrRead"]))
-            for i in range(self.dico["nbrRead"]):
-                read="read"
-                read+=str(i)
-                fichier_sortie.write("#Read_{0}\n{1}\n".format(i, self.dico[read]))
-            fichier_sortie.write("\n")
-
-            fichier_sortie.write("-----------BGI-----------\n")
-            fichier_sortie.write("#plateforme :\n{0}\n".format(self.dico["plateforme"]))
-            fichier_sortie.write("#sample :\n{0}\n".format(self.dico["sample"]))
-            fichier_sortie.write("#library :\n{0}\n".format(self.dico["library"]))
-            fichier_sortie.write('#rgid :\n{0}\n'.format(self.dico["rgid"]))
-            fichier_sortie.write("#rgpu :\n{0}\n\n".format(self.dico["rgpu"]))
-
-            fichier_sortie.write("-----------population design-----------\n")
-            fichier_sortie.write("#backStrainID :\n{0}\n".format(self.dico["backStrainId"]))
-            fichier_sortie.write("#referenced :\n{0}\n".format(self.dico["referenced"]))
-            fichier_sortie.write("#mappStrainId :\n{0}\n".format(self.dico["mappStrainId"]))
-            fichier_sortie.write("#dbSNPbool :\n{0}\n".format(self.dico["dbSNPbool"]))
-            fichier_sortie.write("#dbSNP :\n{0}\n\n".format(self.dico["dbSNP"]))
-
-            fichier_sortie.write("-----------Additionnal files-----------\n")
-            fichier_sortie.write("#ScaffList :\n{0}\n".format(self.dico["listScaff"]))
-            fichier_sortie.write('#InvarScaf :\n{0}\n'.format(self.dico["InvarScaf"]))
-            fichier_sortie.write("#warnScaf :\n{0}\n\n".format(self.dico["warnScaf"]))
-
-        print("fichier ecrit ok")
+            for clef in self.dico:
+                s=clef
+                s+="="
+                s+=str(self.dico[clef])
+                s+="\n"
+                fichier_sortie.write(s)
 
     def remplisDico(self, fichier):
         with open(fichier, "r") as fichier_sortie:
             ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            self.dico["nom"]=ligne
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            self.dico["genRef"]=ligne
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            self.dico["nbrRead"]=ligne
-            ligne=fichier_sortie.readline()
-            for i in range(int(self.dico["nbrRead"])):
-                read="read"
-                read+=str(i)
+            while ligne != "":
+                ligne=ligne.split("=")
+                self.dico[ligne[0]]=ligne[1]
                 ligne=fichier_sortie.readline()
-                self.dico[read]=ligne
-                ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            self.dico["plateforme"]=ligne
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            self.dico["sample"]=ligne
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            self.dico["library"]=ligne
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            self.dico["rgid"]=ligne
-            #print(ligne)
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            self.dico["rgpu"]=ligne
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            self.dico["backStrainId"]=ligne
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            self.dico["referenced"]=int(ligne)
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            self.dico["mappStrainId"]=ligne
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            self.dico["dbSNPbool"]=int(ligne)
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            self.dico["dbSNP"]=ligne
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            self.dico["listScaff"]=ligne
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            self.dico["InvarScaf"]=ligne
-            ligne=fichier_sortie.readline()
-            ligne=fichier_sortie.readline()
-            self.dico["warnScaf"]=ligne
-            #print(ligne)
