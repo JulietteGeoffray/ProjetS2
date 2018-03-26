@@ -3,34 +3,11 @@ import subprocess
 import os
 import re
 
-nbRun = 1
-readID = 'mf76'
-PATH = '/home/amren/Master1/Andalusian_Mapping/docker/'
-READS = []
-READS.append(PATH + 'data/reads/mf76_1_sub.fastq.gz')
-READS.append(PATH + 'data/reads/mf76_2_sub.fastq.gz')
-#READS=['/home/amren/Master1/Andalusian_Mapping/docker/data/read/mf76_1_sub.fastq.gz','/home/amren/Master1/Andalusian_Mapping/docker/data/sample/mf76_2_sub.fastq.gz']
-REFERENCE = PATH + 'data/ref_Gen/nOt.2.0.fna'
-
-RAM = "8"
-RGPL = "ILLUMINA"
-RGSM = "mf76"
-RGLB = "mf76_LB1"
-RGID = "FCH3LFLBBXX_mf76"
-RGPU = "FCH3LFLBBXX_L5_mf76"
-dbSNP= PATH + "data/dbSNP_JU170_v2.0.vcf"
-SCAFF_SIZE= PATH + "data/nOt.2.0_Scaff-size.tsv"
-INVARIANT_SCAFF= PATH + "data/JU170_InvariantScaffold.interval_list"
-BACKGROUND_GVCF = PATH + "data/CEW1.gVCF.vcf"
-MAPPING_GVCF = PATH + "data/JU170.gVCF.vcf"
-snpEff_database = "O.tipulae.2.0"
-snpEff_contig= PATH + "data/snpEff-Databases/snpEff_andalousian.config"
-
-# Software Path
-picard = PATH + "software/picard.jar"
-GATK = PATH + "software/GenomeAnalysisTK.jar"
-snpEff = PATH + "software/snpEff.jar"
-
+with open("ConfigFiles/list.txt", 'wr') as configList:
+    for line in configList:
+        if line.startswith("*"):
+            variables = line.split()[1]
+from variables import *
 
 # Main
 os.chdir(PATH)
@@ -63,13 +40,14 @@ rule all:
         readID + "_plots/" + readID + "_summary.tsv",
         PATH + readID + "/" + readID + "_find_gene/" + readID + ".interval_list",
         readID + "_find_gene/" + readID + ".gVCF.vcf",
-        #readID + "_find_gene/" + readID + "_raw.vcf",
         PATH + readID + "/" +readID + "_find_gene/" + readID + "_raw.vcf",
-        #readID + "_find_gene/" + readID + "_filter.vcf"
-        #readID + "_filter.vcf"
         PATH + readID + "/" + readID + "_find_gene/" + readID + "_filter.vcf",
-        PATH + readID + "/" + readID + "_find_gene/" + readID + "_filter.snpeff.vcf"
-
+        PATH + readID + "/" + readID + "_find_gene/" + readID + "_filter.snpeff.vcf",
+        "results",
+        "high_impact_mutations_table.txt",
+        "moderate_impact_mutations_table.txt",
+        "low_impact_mutations_table.txt",
+        "summary.html"
 
 rule mapping:
     input:
@@ -321,7 +299,6 @@ rule build_candidate_scaffs_list:
     input:
         candidate_scaff = readID + "_plots/" + readID + "_CandidateScaff.tsv"
     output:
-        #interval_list = readID + "_find_gene/" + readID + ".interval_list"
         interval_list = PATH + readID + "/" + readID + "_find_gene/" + readID + ".interval_list"
     run:
         shell("cut -f1 {input} > {output}")
@@ -332,7 +309,6 @@ rule variant_call:
     input:
         bam = readID + ".RG.dedup.SRmerged.realign.BQSR.bam",
         interval_list = PATH + readID + "/" + readID + "_find_gene/" + readID + ".interval_list"
-        #interval_list = readID + "_find_gene/" + readID + ".interval_list"
     output:
         readID + "_find_gene/" + readID + ".gVCF.vcf"
     shell:
@@ -351,7 +327,6 @@ rule genotype_GVCF:
     input:
         readID + "_find_gene/" + readID + ".gVCF.vcf"
     output:
-        #readID + "_find_gene/" + readID + "_raw.vcf"
         vcf = PATH + readID + "/" +readID + "_find_gene/" + readID + "_raw.vcf",
     shell:
         "java -jar -Xmx{RAM}g {GATK} \
@@ -377,11 +352,11 @@ rule filter_variants:
         --variant {input.vcf} -L {input.interval_list} \
         -select 'DP >= 3 && !vc.hasAttribute("DB")' \
         -select 'vc.getGenotype({readID}).isHom() && \
-        vc.getGenotype("{BACKGROUND_GVCF}").isHom() && \
-        vc.getGenotype("{MAPPING_GVCF}").isHom()' \
+        vc.getGenotype("{Background_strain}").isHom() && \
+        vc.getGenotype("{Mapping_strain}").isHom()' \
         -select 'vc.getGenotype({readID}).alleles != \
-        vc.getGenotype("{BACKGROUND_GVCF}").alleles && \
-        vc.getGenotype({readID}).alleles != vc.getGenotype("{MAPPING_GVCF}").alleles' \
+        vc.getGenotype("{Background_strain}").alleles && \
+        vc.getGenotype({readID}).alleles != vc.getGenotype("{Mapping_strain}").alleles' \
         -o mf76_filter.vcf
         cd ..
         """
@@ -399,3 +374,108 @@ rule annotate_variants:
         -v {input} > {output}
         cd ..
         """
+
+rule write_results:
+    input:
+        candidate_scaff = readID + "_plots/" + readID + "_CandidateScaff.tsv",
+        interval_list = readID + "_find_gene/" + readID + ".interval_list",
+        raw_vcf = PATH + readID + "/" +readID + "_find_gene/" + readID + "_raw.vcf",
+        filter_vcf = PATH + readID + "/" + readID + "_find_gene/" + readID + "_filter.vcf"
+    output:
+        "results"
+    shell:
+        """
+        touch {output}
+        echo readID = \\"{readID}\\" > {output} 
+        echo Mapping_strain = \\"{Mapping_strain}\\" >> {output} 
+        echo INVARIANT_SCAFF = \\"{INVARIANT_SCAFF}\\" >> {output}
+        NumberOfIntervals=$(wc -l {input.candidate_scaff} | cut -d " " -f 1)
+        echo NumberOfIntervals = $NumberOfIntervals >> {output}
+        # Return the first column of file candidate_scaff
+        cat {input.interval_list} | while read line ; do grep "$line" {SCAFF_SIZE} | cut -f 2 >>temp_size.tsv; done
+        CumulativeLength=$(paste -sd+ temp_size.tsv | bc)
+        echo CumulativeLength = $CumulativeLength >> {output}
+        TotalLength=$(awk 'END {{ print s }} {{ s += $2 }}' {SCAFF_SIZE})
+        Fraction=`echo "$CumulativeLength $TotalLength" | awk '{{printf "%.2f ", $1/$2 }}'`
+        echo TotalLength = $TotalLength >> {output}
+        echo Fraction = $Fraction >> {output}
+        rm temp_size.tsv
+        NumberOfInvariants=$(wc -l {INVARIANT_SCAFF} | cut -d " " -f 1)
+        echo NumberOfInvariants = $NumberOfInvariants >> {output}
+        WarningList=$(cat {Warning_Scaff} {input.interval_list} | sort | uniq -d)
+        list=$(echo $WarningList | sed 's/ /\", \"/g')
+        echo WarningList = c\\(\\"$list\\"\\) >> {output}
+        NumberOfRawVariants=$(grep -vc "#" {input.raw_vcf} || :)
+        echo NumberOfRawVariants = $NumberOfRawVariants >> {output}
+        NumberOfSpecificVariants=$(grep -vc "#" {input.filter_vcf} || :)
+        echo NumberOfSpecificVariants = $NumberOfSpecificVariants >> {output}
+        """
+
+rule high_impact_mutations:
+    input:
+        filter_vcf = PATH + readID + "/" + readID + "_find_gene/" + readID + "_filter.snpeff.vcf",
+        results = "results"
+    output:
+        "high_impact_mutations_table.txt"
+    shell:
+        """
+        cat {input.filter_vcf} | \
+        {snpEff_pl} | \
+        java -jar ../software/snpEff/SnpSift.jar filter "ANN[0].IMPACT has 'HIGH'" | \
+        java -jar ../software/snpEff/SnpSift.jar extractFields - CHROM POS REF ALT "ANN[*].GENE" "ANN[*].FEATUREID" "ANN[*].EFFECT" "LOF[*].GENE">> {output}
+        NbHIGH=$(cat {input.filter_vcf} | \
+        {snpEff_pl} | \
+        java -jar ../software/snpEff/SnpSift.jar filter "ANN[0].IMPACT has 'HIGH'" | \
+        grep -vc "#" || :)
+        echo NbHIGH = $NbHIGH >> {input.results}
+        """
+
+rule moderate_impact_mutations:
+    input:
+        filter_vcf = PATH + readID + "/" + readID + "_find_gene/" + readID + "_filter.snpeff.vcf",
+        results = "results"
+    output:
+        "moderate_impact_mutations_table.txt"
+    shell:
+        """
+        cat {input.filter_vcf} | \
+        {snpEff_pl} | \
+        java -jar ../software/snpEff/SnpSift.jar filter "ANN[0].IMPACT has 'MODERATE'" | \
+        java -jar ../software/snpEff/SnpSift.jar extractFields - CHROM POS REF ALT "ANN[*].GENE" "ANN[*].FEATUREID" "ANN[*].EFFECT" "LOF[*].GENE">> {output}
+        NbMODERATE=$(cat {input.filter_vcf} | \
+        {snpEff_pl} | \
+        java -jar ../software/snpEff/SnpSift.jar filter "ANN[0].IMPACT has 'MODERATE'" | \
+        grep -vc "#" || :)
+        echo NbMODERATE = $NbMODERATE >> {input.results}
+        """
+
+rule low_impact_mutations:
+    input:
+        filter_vcf = PATH + readID + "/" + readID + "_find_gene/" + readID + "_filter.snpeff.vcf",
+        results = "results"
+    output:
+        "low_impact_mutations_table.txt"
+    shell:
+        """
+        cat {input.filter_vcf} | \
+        {snpEff_pl} | \
+        java -jar ../software/snpEff/SnpSift.jar filter "ANN[0].IMPACT has 'LOW'" | \
+        java -jar ../software/snpEff/SnpSift.jar extractFields - CHROM POS REF ALT "ANN[*].GENE" "ANN[*].FEATUREID" "ANN[*].EFFECT" "LOF[*].GENE">> {output}
+        NbLOW=$(cat {input.filter_vcf} | \
+        {snpEff_pl} | \
+        java -jar ../software/snpEff/SnpSift.jar filter "ANN[0].IMPACT has 'LOW'" | \
+        grep -vc "#" || :)
+        echo NbLOW = $NbLOW >> {input.results}
+        """
+
+rule generate_html_summary:
+    input:
+        "../summary.Rmd"
+    output:
+        "summary.html"
+    shell:
+        """
+        R -e "rmarkdown::render('{input}')"
+        mv ../summary.html .
+        """
+
