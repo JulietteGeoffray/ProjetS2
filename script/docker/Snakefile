@@ -2,15 +2,26 @@ import vcf
 import subprocess
 import os
 import re
+import sys
+import shutil
 
-with open("ConfigFiles/list.txt", 'wr') as configList:
+
+### Import dynamically configuration file asked by user and filled by the GUI :
+with open("ConfigFiles/list.txt", 'r') as configList:
     for line in configList:
         if line.startswith("*"):
-            variables = line.split()[1]
-from variables import *
+            configFilePath = "ConfigFiles/" + line.split()[1]
+            configFileName = line.split()[1]
+
+shutil.copy(configFilePath, '.')
+os.rename(configFileName, 'configFile.py')
+
+from configFile import *
+
 
 # Main
 os.chdir(PATH)
+
 
 if not os.path.isdir(readID):
     os.mkdir(readID)
