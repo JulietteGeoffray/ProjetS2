@@ -481,6 +481,7 @@ rule low_impact_mutations:
 
 rule generate_html_summary:
     input:
+        "results",
         "../summary.Rmd"
     output:
         "summary.html"

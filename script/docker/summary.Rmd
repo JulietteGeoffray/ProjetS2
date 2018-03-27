@@ -1,0 +1,135 @@
+---
+title: "Andalusian Mapping" 
+subtitle: "Summary Results"
+date: "`r Sys.Date()`"
+author: "Andalusian Mapping"
+output:
+  rmdformats::readthedown:
+    highlight: kate
+---
+
+
+```{r knitr_init, echo=FALSE, cache=FALSE}
+library(knitr)
+library(rmdformats)
+library(DT)
+
+## Global options
+options(max.print = "75")
+opts_chunk$set(echo = FALSE,
+	             cache = FALSE,
+               prompt = FALSE,
+               tidy = FALSE,
+               comment = NA,
+               message = FALSE,
+               warning = FALSE)
+opts_knit$set(width = 75)
+```
+
+```{r}
+path='/home/amren/Master1/ProjetS2/ProjetS2/script/docker/'
+source("/home/amren/Master1/ProjetS2/ProjetS2/script/docker/mf76/results")
+
+```
+
+
+# Sample analyzed : `r readID`
+
+
+Variant analysis is restricted to intervals listed to the table below
+
+```{r}
+CandidateScaff = read.table(paste(path,'/',readID,"/",readID, "_plots/", readID, "_CandidateScaff.tsv", sep=""), header = F)
+
+names(CandidateScaff) <- c("Candidate Scaffold", "Frequency")
+DT::datatable(CandidateScaff)
+```
+
+Those intervals defined by mapping contain **`r NumberOfIntervals`** scaffolds.
+
+**`r NumberOfInvariants`** scaffolds with no **`r Mapping_strain`**-SNPs were added to the analysis.
+
+
+```{r}
+Invariant_Scaff = read.table(INVARIANT_SCAFF, header = F)
+names(Invariant_Scaff) <- c("Invariant Scaffold")
+DT::datatable(Invariant_Scaff)
+```
+
+
+Altogether, these intervals are **`r format(CumulativeLength, scientific = F)`** bp long ( **`r format(Fraction, scientific = F)`** of Oscheius genome)
+
+
+```{r}
+if (length(WarningList)==0){
+  print("Your selection of mapping intervals does not contain any scaffolds from the warning list.")
+}else{
+  print(paste("Warning: the selection of mapping intervals countains ", length(WarningList) ," scaffolds that belong to the warning list.", sep=""))
+}
+```
+
+
+Variant analysis on the selected intervals calls **`r format(NumberOfRawVariants, scientific = F)`** variants.
+
+# High Impact Mutations
+
+```{r}
+high = try(read.table(paste(path,'/', readID, '/high_impact_mutations_table.txt', sep =""), h=T))
+if(class(high)=='try-error'){
+  cat("No high impact mutations found")
+}else{
+  DT::datatable(high)
+}
+```
+
+# Moderate Impact Mutations 
+
+```{r}
+moderate = try(read.table(paste(path, '/', readID, '/moderate_impact_mutations_table.txt', sep =""), h=T))
+if(class(moderate)=='try-error'){
+  cat("No moderate impact mutations found")
+}else{
+  DT::datatable(moderate)
+}
+
+```
+
+
+# Low Impact mutations
+
+```{r}
+low = try(read.table(paste(path,'/', readID, '/low_impact_mutations_table.txt', sep =""), h=T))
+if(class(low)=='try-error'){
+  cat("No low impact mutations found")
+}else{
+  DT::datatable(low)
+}
+
+```
+
+
+
+# Counts of variants per functional class
+
+Number of High-impact mutations: `r NbHIGH`
+
+Number of Moderate-impact mutations: `r NbMODERATE`
+
+Number of Low-impact mutations: `r NbLOW`
+
+```{r}
+scaff_list <- CandidateScaff$"Candidate Scaffold"
+scaffImages <- c()
+for (i in scaff_list){
+  scaffImages <- append(scaffImages, paste(path, readID, '_', i, sep=""))
+}
+scaffImages
+test <- toString(scaffImages[1])
+```
+
+![toto](`r test`) 
+
+
+
+
+
